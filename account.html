@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Account | MotivTrading</title>
 
-  <!-- Global site styling -->
   <link rel="stylesheet" href="site-template.css" />
 
   <style>
@@ -27,7 +27,6 @@
     }
 
     *{box-sizing:border-box}
-
     html{scroll-behavior:smooth}
 
     body{
@@ -201,7 +200,26 @@
       .account-shell{grid-template-columns:1fr}
       .metric-grid{grid-template-columns:1fr}
     }
+
+    /* ---- FIX: remove underline from header logo links ---- */
+
+    header a,
+    header a:link,
+    header a:visited,
+    header a:hover,
+    header a:active{
+      text-decoration:none !important;
+    }
+
+    header .brand,
+    header .brand *,
+    header .logo,
+    header .logo *{
+      text-decoration:none !important;
+    }
+
   </style>
+
 </head>
 
 <body>
@@ -286,12 +304,10 @@ Logout
 </div>
 </section>
 
-<!-- Scripts -->
-
 <script type="module" src="./js/account.js"></script>
+
 <script type="module" src="./js/checkout.js"></script>
 
-<!-- Shared site header -->
 <script type="module" src="public-header.js"></script>
 
 </body>
