@@ -1,0 +1,442 @@
+
+:root{
+  --bg:#07101d; --bg2:#0a1425; --panel:rgba(255,255,255,.05); --panel2:#0d172a;
+  --border:rgba(255,255,255,.10); --text:#fff; --muted:rgba(255,255,255,.72);
+  --muted2:rgba(255,255,255,.54); --gold:#d7b56d; --gold2:#f0cf84;
+  --green:#2fd48a; --red:#e36b6b; --shadow:0 20px 50px rgba(0,0,0,.28); --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at top, rgba(215,181,109,.10), transparent 24%),linear-gradient(180deg,#0a1425 0%,#07101d 48%,#07101d 100%);
+  line-height:1.65;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+.header{position:sticky; top:0; z-index:100; background:rgba(7,16,29,.92); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.10)}
+.header-inner{max-width:1180px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:24px}
+.brand{display:flex; align-items:center; gap:14px}
+.logo{width:46px; height:46px; border-radius:16px; display:grid; place-items:center; background:#0f1930; border:1px solid rgba(215,181,109,.35); color:#f0cf84; font-weight:800; box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.brand-top{font-size:11px; letter-spacing:.30em; text-transform:uppercase; color:#d7b56d}
+.brand-bottom{font-size:18px; font-weight:700; color:#fff}
+.nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.nav a{color:#f0cf84; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.04); font-size:14px}
+.nav a:hover,.nav a.active{background:rgba(255,255,255,.10)}
+.hero{padding:38px 0 28px; border-bottom:1px solid var(--border)}
+.eyebrow{display:inline-flex; padding:10px 14px; border-radius:999px; border:1px solid rgba(215,181,109,.28); background:rgba(255,255,255,.04); color:var(--gold2); font-size:11px; text-transform:uppercase; letter-spacing:.30em}
+h1{margin:18px 0 14px; line-height:1.04; letter-spacing:-.03em; font-size:clamp(34px,4.8vw,58px)}
+h2{margin:0 0 12px; line-height:1.1; letter-spacing:-.03em; font-size:clamp(28px,3.8vw,42px)}
+h3{margin:0 0 10px; line-height:1.1}
+.lead,.subtext,p,li{color:var(--muted)}
+section.block{padding:36px 0 74px}
+.grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.card{background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:28px; padding:28px; box-shadow:var(--shadow)}
+.mini{background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08); border-radius:22px; padding:20px}
+.stats .num{font-size:28px; font-weight:800; color:var(--gold2)}
+.stats .label{font-size:13px; color:var(--muted2)}
+.lesson-list,.checklist{display:grid; gap:12px; margin-top:14px}
+.lesson,.check-item{display:flex; gap:12px; align-items:flex-start; padding:14px 16px; border-radius:18px; background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08)}
+.tick{color:var(--gold2); font-weight:800}
+.badge{color:var(--gold2); border:1px solid rgba(215,181,109,.30); background:rgba(215,181,109,.10); padding:8px 12px; border-radius:12px; font-size:12px; text-transform:uppercase; letter-spacing:.18em; white-space:nowrap}
+.lesson-head{display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom:12px}
+.sidebar-layout{display:grid; grid-template-columns:300px 1fr; gap:20px}
+.sidebar{position:sticky; top:92px; align-self:start; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:28px; padding:18px; box-shadow:var(--shadow)}
+.sidebar-title{font-size:11px; letter-spacing:.30em; text-transform:uppercase; color:var(--gold); margin-bottom:12px}
+.sidebar a{display:block; margin-bottom:10px; padding:14px 16px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid var(--border); color:#fff}
+.sidebar a span{display:block; font-size:13px; color:var(--muted2); margin-top:5px}
+.sidebar a.active,.sidebar a:hover{background:rgba(215,181,109,.11); border-color:rgba(215,181,109,.34)}
+.progress-box{background:#0b1629; border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:16px; margin-bottom:16px}
+.progress-top{display:flex; justify-content:space-between; gap:10px; font-size:14px}
+.progress-top span:last-child{color:var(--gold2); font-weight:700}
+.bar{height:10px; border-radius:999px; background:rgba(255,255,255,.08); margin-top:12px; overflow:hidden}
+.bar-fill{height:100%; background:linear-gradient(90deg,#d7b56d,#f0cf84)}
+.pills{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+.pill{padding:9px 12px; border-radius:999px; font-size:13px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.05); color:var(--muted)}
+table{width:100%; border-collapse:collapse}
+th,td{padding:14px 14px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
+th{background:#0f1930; color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.12em}
+td{color:var(--muted); background:rgba(255,255,255,.03)}
+.table-wrap{overflow:auto; border-radius:22px; border:1px solid var(--border); margin-top:18px}
+input,select,textarea{width:100%; background:rgba(255,255,255,.05); border:1px solid var(--border); color:#fff; border-radius:14px; padding:12px 14px; font-size:15px; margin-top:6px}
+label{display:block; font-size:13px; color:var(--muted2); margin-top:10px}
+button.primary{margin-top:14px; border:none; border-radius:14px; background:var(--gold); color:#08101d; padding:12px 16px; font-weight:700; cursor:pointer}
+.result{border-radius:18px; padding:16px; background:rgba(215,181,109,.10); border:1px solid rgba(215,181,109,.24); margin-top:14px}
+.callout{border-radius:22px; padding:18px 20px; background:rgba(215,181,109,.08); border:1px solid rgba(215,181,109,.24); color:#fff}
+.image-card img{width:100%; height:auto; max-height:760px; object-fit:contain; border-radius:20px; border:1px solid rgba(255,255,255,.08); background:#08101d; padding:10px}
+.footer{padding:40px 0 56px; color:var(--muted2); font-size:13px; text-align:center}
+@media (max-width: 980px){
+  .header-inner{flex-direction:column; align-items:flex-start}
+  .grid-2,.grid-3,.grid-4,.sidebar-layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .lesson-head{flex-direction:column; align-items:flex-start}
+}
+
+/* ===== MotivTrading premium polish pack ===== */
+
+/* Sidebar polish */
+.sidebar-title{
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.curriculum-label{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold2);
+  margin-bottom:10px;
+}
+
+.sidebar a strong{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Standard progress wording */
+.progress-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.progress-caption{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* Standard lesson / section nav cards */
+.nav-cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:18px;
+}
+.nav-cards a{
+  display:block;
+  border-radius:24px;
+  padding:22px;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  color:inherit;
+  text-decoration:none;
+}
+.nav-label{
+  font-size:12px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold2);
+}
+.nav-title{
+  font-size:20px;
+  font-weight:800;
+  margin-top:8px;
+}
+.nav-desc{
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* Dashboard welcome card */
+.welcome-card{
+  border:1px solid rgba(214,170,86,.35);
+  background:rgba(214,170,86,.08);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+.welcome-card h3{
+  margin:0 0 8px 0;
+}
+.welcome-card p{
+  margin:0;
+}
+.welcome-card .welcome-steps{
+  display:grid;
+  gap:10px;
+  margin-top:14px;
+}
+.welcome-card .welcome-steps div{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px 14px;
+  background:rgba(255,255,255,.03);
+}
+
+@media (max-width:1100px){
+  .nav-cards{grid-template-columns:1fr}
+}
+
+
+/* ===== Unified members sidebar ===== */
+.sidebar{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+}
+.sidebar .progress-box{
+  margin-bottom:14px;
+}
+.sidebar .progress-box:last-of-type{
+  margin-bottom:16px;
+}
+.sidebar .progress-meta span{
+  color:var(--gold2);
+  font-weight:800;
+}
+.sidebar a strong{
+  font-size:15px;
+}
+
+
+/* ===== Progress + locking system ===== */
+.sidebar a{position:relative; transition:transform .18s ease, border-color .18s ease, background .18s ease, opacity .18s ease}
+.sidebar a:hover{transform:translateY(-1px)}
+.sidebar a.locked{opacity:.62; filter:saturate(.85)}
+.sidebar a.locked::after{content:"Locked"; position:absolute; right:14px; top:14px; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold2); padding:5px 7px; border-radius:999px; border:1px solid rgba(215,181,109,.25); background:rgba(215,181,109,.08)}
+.sidebar a.completed{border-color:rgba(47,212,138,.28); background:rgba(47,212,138,.08)}
+.sidebar a.completed strong::before{content:"✓"; color:var(--green); font-weight:900}
+.sidebar a.locked strong::before{content:"🔒"}
+.sidebar a.completed strong, .sidebar a.locked strong{justify-content:space-between}
+.progress-box-primary{background:linear-gradient(180deg, rgba(240,207,132,.10), rgba(11,22,41,.9)); border-color:rgba(215,181,109,.18)}
+.bar-fill{transition:width .35s ease}
+.lesson-status-card{margin-top:8px; border:1px solid rgba(215,181,109,.22); border-radius:20px; padding:16px; background:rgba(255,255,255,.03)}
+.lesson-status-label{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold2); margin-bottom:8px}
+.lesson-status-card strong{display:block; margin-bottom:6px}
+.lesson-status-card p{font-size:13px; margin:0 0 14px}
+.btn-complete{border:none; border-radius:14px; padding:12px 16px; font-weight:800; cursor:pointer; background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#08101d; box-shadow:var(--shadow)}
+.btn-complete.is-complete{background:rgba(47,212,138,.14); color:#fff; border:1px solid rgba(47,212,138,.28)}
+.btn-complete-sidebar{width:100%}
+.module-item{position:relative; transition:border-color .2s ease, background .2s ease, transform .2s ease}
+.module-item.is-locked{opacity:.64}
+.module-item.is-locked::after{content:"Locked until previous module is complete"; position:absolute; right:14px; top:14px; font-size:11px; color:var(--muted)}
+.module-item.is-complete{border-color:rgba(47,212,138,.28); background:rgba(47,212,138,.07)}
+.module-item .status-pill{transition:all .2s ease}
+
+
+.btn-reset{border:1px solid rgba(255,255,255,.14); border-radius:14px; padding:12px 16px; font-weight:800; cursor:pointer; background:rgba(255,255,255,.04); color:#fff; transition:background .2s ease, border-color .2s ease, transform .2s ease}
+.btn-reset:hover{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22); transform:translateY(-1px)}
+.btn-reset[hidden]{display:none !important}
+.btn-reset-sidebar{width:100%; margin-top:10px}
+.progress-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.progress-actions .btn-reset{flex:1}
+
+
+/* ===== Premium course system ===== */
+.course-shell{display:grid;grid-template-columns:minmax(0,1.08fr) 320px;gap:18px;align-items:start}
+.course-main{display:grid;gap:18px;min-width:0}
+.lesson-hero-card{padding:30px;border-radius:30px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));border:1px solid var(--border);box-shadow:var(--shadow)}
+.lesson-meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.meta-pill{padding:9px 12px;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:var(--muted)}
+.lesson-hero-card h2{margin:10px 0 12px;font-size:clamp(28px,4vw,44px)}
+.lesson-hero-card p{max-width:900px}
+.objective-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.objective-item{padding:18px;border-radius:20px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08)}
+.objective-item strong{display:block;color:#fff;margin-bottom:6px}
+.lesson-panel{border-radius:28px;padding:28px;background:rgba(255,255,255,.05);border:1px solid var(--border);box-shadow:var(--shadow)}
+.lesson-kicker,.section-kicker{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold2)}
+.lesson-panel h3{font-size:28px;margin:10px 0 8px}
+.lesson-panel p:last-child{margin-bottom:0}
+.chapter-list{display:grid;gap:12px;margin-top:14px}
+.chapter-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:18px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.08)}
+.chapter-num{width:38px;min-width:38px;height:38px;flex:0 0 38px;border-radius:14px;display:flex;align-items:center;justify-content:center;line-height:1;background:rgba(215,181,109,.12);border:1px solid rgba(215,181,109,.25);color:var(--gold2);font-weight:800;font-size:15px;padding-bottom:1px}
+.lesson-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lesson-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.note-card{border-radius:22px;padding:20px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.08)}
+.note-card strong{display:block;color:#fff;margin-bottom:8px}
+.warning-card{border-left:4px solid var(--red)}
+.action-card{border-left:4px solid var(--gold)}
+.lesson-rail{position:sticky;top:92px;display:grid;gap:14px}
+.rail-card{border-radius:24px;padding:20px;background:rgba(255,255,255,.05);border:1px solid var(--border);box-shadow:var(--shadow)}
+.rail-card h4{margin:0 0 12px;font-size:16px}
+.rail-card .small{font-size:13px;color:var(--muted)}
+.rail-list{display:grid;gap:10px}
+.rail-list a,.rail-list div{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.08);color:#fff}
+.rail-list a:hover{background:rgba(215,181,109,.10);border-color:rgba(215,181,109,.28)}
+.rail-list .rail-index{width:24px;min-width:24px;height:24px;flex:0 0 24px;border-radius:8px;display:flex;align-items:center;justify-content:center;line-height:1;background:#0f1930;color:var(--gold2);font-size:12px;font-weight:800;text-align:center;padding-bottom:1px}
+.lesson-visual{display:grid;gap:12px}
+.lesson-visual img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;border-radius:22px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);background:#08101d;padding:10px}
+.lesson-visual .caption{padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.lesson-footer-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lesson-footer-nav a{display:block;padding:20px 22px;border-radius:24px;background:rgba(255,255,255,.05);border:1px solid var(--border);box-shadow:var(--shadow)}
+.lesson-footer-nav .dir{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2)}
+.lesson-footer-nav strong{display:block;margin-top:8px;font-size:20px}
+.lesson-footer-nav span{display:block;margin-top:6px;color:var(--muted)}
+.module-map{display:grid;gap:12px}
+.module-map .module-item{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:18px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.08)}
+.module-item-left{display:grid;gap:4px}
+.module-item-left strong{color:#fff}
+.module-item-left span{color:var(--muted)}
+.module-item .status-pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);font-size:12px;color:var(--gold2);white-space:nowrap}
+.module-item.is-complete{border-color:rgba(47,212,138,.28);background:rgba(47,212,138,.07)}
+.module-item.is-current{border-color:rgba(215,181,109,.26);background:rgba(215,181,109,.08)}
+.module-item a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;width:100%}
+.progress-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.summary-card{padding:18px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid var(--border);box-shadow:var(--shadow)}
+.summary-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.summary-value{margin-top:8px;font-size:28px;font-weight:800;line-height:1.05}
+.summary-note{margin-top:6px;color:var(--muted);font-size:14px}
+.next-step-card{display:grid;gap:12px;padding:24px;border-radius:28px;background:linear-gradient(180deg, rgba(215,181,109,.12), rgba(255,255,255,.03));border:1px solid rgba(215,181,109,.25);box-shadow:var(--shadow)}
+.next-step-card h3{margin:0}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:14px;font-weight:800;border:none;cursor:pointer}
+.btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#08101d}
+.btn-secondary{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.12)}
+.completion-banner{padding:16px 18px;border-radius:20px;background:rgba(47,212,138,.10);border:1px solid rgba(47,212,138,.24);color:#fff}
+.completion-banner strong{display:block;margin-bottom:4px}
+@media (max-width:1100px){
+  .course-shell{grid-template-columns:1fr}
+  .lesson-rail{position:static}
+  .objective-grid,.lesson-grid-2,.lesson-grid-3,.progress-summary,.lesson-footer-nav{grid-template-columns:1fr}
+}
+
+
+/* ===== Lesson rail cleanup ===== */
+.rail-list a,.rail-list div{align-items:flex-start}
+.rail-list a > div:last-child,.rail-list div > div:last-child{display:grid;gap:3px;min-width:0}
+.rail-list a strong,.rail-list div strong{display:block;line-height:1.25}
+.rail-list .small{line-height:1.3}
+.quick-actions-card .btn-row.rail-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:6px}
+.quick-actions-card .btn-secondary{width:100%;min-height:48px;text-align:center;padding:13px 16px}
+.lesson-panel .btn-row .btn-secondary{min-height:48px}
+.lesson-footer-nav a:hover,.quick-actions-card .btn-secondary:hover{border-color:rgba(215,181,109,.28);background:rgba(215,181,109,.10)}
+
+
+/* unified header spacing */
+body.has-shell-header .hero{padding-top:42px;}
+@media (max-width:1120px){body.has-shell-header .hero{padding-top:28px;}}
+
+
+/* ===== Course content expansion ===== */
+.example-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:16px}
+.example-card{border-radius:24px;padding:18px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+.example-card img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;border-radius:18px;border:1px solid rgba(255,255,255,.08);margin-bottom:12px;background:#08101d;padding:10px}
+.example-card h4{margin:0 0 8px;font-size:20px}
+.example-card p{margin:0 0 12px}
+.example-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lesson-bullets{display:grid;gap:10px;margin-top:14px;padding-left:18px}
+.lesson-bullets li{color:var(--muted)}
+.case-study-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:18px}
+.case-study-card{border:1px solid var(--border);border-radius:24px;padding:20px;background:rgba(255,255,255,.04);box-shadow:var(--shadow)}
+.case-study-card img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain;border-radius:18px;border:1px solid rgba(255,255,255,.08);margin:12px 0;background:#08101d;padding:10px}
+.case-study-card h3{margin:0 0 8px;font-size:24px}
+.case-study-card .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chart-caption{font-size:13px;color:var(--muted2)}
+@media (max-width:1100px){.example-grid,.case-study-grid{grid-template-columns:1fr}}
+
+.gold-callout{border:1px solid rgba(214,170,86,.35);background:rgba(214,170,86,.08);border-radius:20px;padding:18px;margin-top:18px}
+.gold-callout strong{display:block;margin-bottom:6px}
+
+
+.chart-view-note{font-size:12px;color:var(--muted2);margin-top:10px}
+.example-card,.case-study-card{padding:22px 22px 20px}
+.example-card h4,.case-study-card h3{line-height:1.18}
+
+
+/* ============================= */
+/* MotivTrading Setup Playbooks  */
+/* ============================= */
+.setup-showcase{
+  display:grid;
+  gap:22px;
+}
+.setup-card{
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  box-shadow:var(--shadow);
+}
+.setup-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(214,170,86,.28);
+  background:rgba(214,170,86,.08);
+  color:var(--gold2);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.setup-title-xl{
+  font-size:clamp(28px,3vw,40px);
+  line-height:1.05;
+  margin:0 0 10px;
+}
+.setup-intro{
+  color:var(--muted);
+  max-width:860px;
+  margin:0 0 20px;
+}
+.setup-chart-frame{
+  margin:22px auto 24px;
+  max-width:900px;
+  padding:14px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(10,14,22,.72);
+}
+.setup-chart-full{
+  width:100%;
+  max-width:850px;
+  display:block;
+  margin:0 auto;
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+.setup-caption{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:14px;
+}
+.setup-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:16px;
+}
+.setup-detail{
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  background:rgba(255,255,255,.028);
+}
+.setup-detail h4{
+  margin:0 0 8px;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold2);
+}
+.setup-detail p{
+  margin:0;
+  color:#e8edf7;
+  line-height:1.7;
+}
+.setup-stat-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.setup-stat{
+  padding:9px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+  font-size:13px;
+}
+@media (max-width: 900px){
+  .setup-card{padding:20px; border-radius:22px;}
+  .setup-detail-grid{grid-template-columns:1fr;}
+}

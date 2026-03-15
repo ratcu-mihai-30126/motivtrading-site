@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module" src="../js/access-check.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources - MotivTrading</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .content-column{min-width:0;}
+    .content-column .nav-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+    .content-column .nav-cards a{
+      display:block;
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      color:inherit;
+      text-decoration:none;
+    }
+    .content-column .nav-label{
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .content-column .nav-title{
+      font-size:20px;
+      font-weight:800;
+      margin-top:8px;
+    }
+    .content-column .nav-desc{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .resource-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+    .resource-card{
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+    }
+    .resource-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .resource-kicker{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold2);
+      margin-bottom:6px;
+    }
+    .resource-title{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.15;
+    }
+    .resource-badge{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .resource-desc{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+    .resource-list{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+    .resource-item{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.025);
+    }
+    .resource-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
+    }
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:14px;
+      padding:12px 16px;
+      font-weight:700;
+      text-decoration:none;
+      background:linear-gradient(135deg,var(--gold1),var(--gold2));
+      color:#111;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      border:1px solid var(--border);
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .mini-card strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .gold-callout{
+      border:1px solid rgba(214,170,86,.35);
+      background:rgba(214,170,86,.08);
+      border-radius:20px;
+      padding:18px;
+      margin-top:18px;
+    }
+    .gold-callout strong{
+      display:block;
+      margin-bottom:6px;
+    }
+    @media (max-width: 1100px){
+      .content-column .nav-cards,
+      .resource-grid,
+      .mini-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <link rel="stylesheet" href="../site-template.css" />
+</head>
+<body data-member-page="resources.html">
+<section class="hero">
+    <div class="container">
+      <div class="eyebrow">Support material</div>
+      <h1>Resources</h1>
+      <div class="lead">
+        This page contains the checklists, templates, and support material that help turn the course into a repeatable trading system.
+        Use these resources before the session, during execution, and during review.
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container sidebar-layout">
+      <aside class="sidebar">
+        <div class="sidebar-title">Course Curriculum</div>
+        <div class="curriculum-label">Member progress</div>
+        <div class="progress-box progress-box-primary">
+          <div class="progress-meta">
+            <div class="progress-caption">Lesson progress</div>
+            <span data-progress-label>0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" data-progress-fill style="width:0%;"></div></div>
+        </div>
+        <a href="dashboard.html"><strong>🏠 Dashboard</strong><span>Overview and roadmap</span></a>
+        <a href="module1_foundations.html" data-module-link="1"><strong>📘 Trading Foundations</strong><span>Build market context</span></a>
+        <a href="module2_market_structure.html" data-module-link="2"><strong>📊 Market Structure</strong><span>Read trend and range</span></a>
+        <a href="module3_entry_systems.html" data-module-link="3"><strong>🎯 Entry Systems</strong><span>Confirmation-based entries</span></a>
+        <a href="module4_execution.html" data-module-link="4"><strong>⚙️ Execution</strong><span>Management and targets</span></a>
+        <a href="module5_risk_management.html" data-module-link="5"><strong>🛡️ Risk Management</strong><span>Protect capital</span></a>
+        <a href="module6_psychology.html" data-module-link="6"><strong>🧠 Psychology</strong><span>Discipline and review</span></a>
+        <a href="playbooks.html" data-support-link="true"><strong>🗂️ Playbooks</strong><span>Repeatable setups</span></a>
+        <a href="tools.html" data-support-link="true"><strong>🧮 Tools</strong><span>Interactive calculators</span></a>
+        <a href="journal.html" data-support-link="true"><strong>📝 Journal</strong><span>Self-review system</span></a>
+        <a href="case_studies.html" data-support-link="true"><strong>📚 Case Studies</strong><span>Trade examples</span></a>
+        <a class="active" href="resources.html" data-support-link="true"><strong>📦 Resources</strong><span>Downloads and next steps</span></a>
+      </aside>
+
+      <div class="content-column">
+        <div class="grid-2">
+          <div class="card">
+            <div class="lesson-head"><h3>How to use resources</h3><div class="badge">Practical use</div></div>
+            <p>
+              These materials are here to reduce decision fatigue. The more you standardize your preparation, execution, and review,
+              the easier it becomes to trade with discipline.
+            </p>
+            <div class="pills">
+              <div class="pill">Pre-market</div>
+              <div class="pill">Execution</div>
+              <div class="pill">Review</div>
+              <div class="pill">Risk control</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Important rule</h3><div class="badge">Professional mindset</div></div>
+            <p>
+              Do not collect resources just to feel productive. Pick the ones you will actually use every week.
+              The best resource is the one that becomes part of your process.
+            </p>
+          </div>
+        </div>
+
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-top">
+              <div>
+                <div class="resource-kicker">Checklist pack</div>
+                <div class="resource-title">Pre-Trade Checklist</div>
+              </div>
+              <div class="resource-badge">Use before entry</div>
+            </div>
+            <div class="resource-desc">
+              A simple checklist to review context, setup quality, trigger, invalidation, and reward-to-risk before placing a trade.
+            </div>
+            <div class="resource-list">
+              <div class="resource-item"><strong>What to check</strong>Market condition, structural bias, session timing, setup fit, and target logic.</div>
+              <div class="resource-item"><strong>Best use</strong>Read it before every order until the process becomes automatic.</div>
+              <div class="resource-item"><strong>Goal</strong>Reduce impulsive trades and improve execution quality.</div>
+            </div>
+            <div class="btn-row">
+              <a href="#" class="btn">Download PDF</a>
+              <a href="#" class="btn btn-secondary">Open template</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-top">
+              <div>
+                <div class="resource-kicker">Review pack</div>
+                <div class="resource-title">Post-Trade Review Sheet</div>
+              </div>
+              <div class="resource-badge">Use after exit</div>
+            </div>
+            <div class="resource-desc">
+              A review template for recording what happened, what followed the plan, and what should improve next time.
+            </div>
+            <div class="resource-list">
+              <div class="resource-item"><strong>What to review</strong>Entry quality, stop logic, target logic, execution discipline, and emotional state.</div>
+              <div class="resource-item"><strong>Best use</strong>Complete it after meaningful trades or at the end of the session.</div>
+              <div class="resource-item"><strong>Goal</strong>Build honest feedback loops instead of relying on memory.</div>
+            </div>
+            <div class="btn-row">
+              <a href="#" class="btn">Download PDF</a>
+              <a href="#" class="btn btn-secondary">Open template</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-top">
+              <div>
+                <div class="resource-kicker">Risk pack</div>
+                <div class="resource-title">Risk Model Cheat Sheet</div>
+              </div>
+              <div class="resource-badge">Capital protection</div>
+            </div>
+            <div class="resource-desc">
+              A quick reference guide for fixed risk per trade, daily loss caps, and scaling rules.
+            </div>
+            <div class="resource-list">
+              <div class="resource-item"><strong>What it includes</strong>0.5%, 1%, and 2% models, daily cutoff ideas, and size discipline reminders.</div>
+              <div class="resource-item"><strong>Best use</strong>Keep it open next to the tools page before trading.</div>
+              <div class="resource-item"><strong>Goal</strong>Protect capital and remove emotional sizing decisions.</div>
+            </div>
+            <div class="btn-row">
+              <a href="#" class="btn">Download PDF</a>
+              <a href="#" class="btn btn-secondary">Open template</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-top">
+              <div>
+                <div class="resource-kicker">Setup pack</div>
+                <div class="resource-title">Playbook Summary Sheet</div>
+              </div>
+              <div class="resource-badge">Pattern reference</div>
+            </div>
+            <div class="resource-desc">
+              A one-page summary of the main course playbooks with market condition, trigger, stop, and target logic.
+            </div>
+            <div class="resource-list">
+              <div class="resource-item"><strong>What it includes</strong>Opening Range Breakout, Trend Pullback, Sweep Reversal, Failed Breakout, and more.</div>
+              <div class="resource-item"><strong>Best use</strong>Review before the session to know exactly what you are hunting.</div>
+              <div class="resource-item"><strong>Goal</strong>Narrow focus and increase setup recognition speed.</div>
+            </div>
+            <div class="btn-row">
+              <a href="#" class="btn">Download PDF</a>
+              <a href="#" class="btn btn-secondary">Open template</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-top">
+              <div>
+                <div class="resource-kicker">Routine pack</div>
+                <div class="resource-title">Weekly Review Template</div>
+              </div>
+              <div class="resource-badge">Use every Friday</div>
+            </div>
+            <div class="resource-desc">
+              A structured weekly review to identify your best setup, biggest mistake, strongest behavior, and one rule to improve next week.
+            </div>
+            <div class="resource-list">
+              <div class="resource-item"><strong>What to review</strong>Win rate, net R, emotional patterns, setup distribution, and execution quality.</div>
+              <div class="resource-item"><strong>Best use</strong>Complete it after your final trading day of the week.</div>
+              <div class="resource-item"><strong>Goal</strong>Turn journal data into practical changes.</div>
+            </div>
+            <div class="btn-row">
+              <a href="#" class="btn">Download PDF</a>
+              <a href="#" class="btn btn-secondary">Open template</a>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-top">
+              <div>
+                <div class="resource-kicker">Support pack</div>
+                <div class="resource-title">Progress Roadmap</div>
+              </div>
+              <div class="resource-badge">Long-term guidance</div>
+            </div>
+            <div class="resource-desc">
+              A roadmap showing how to move from learning the material into collecting data, refining setups, and improving consistency.
+            </div>
+            <div class="resource-list">
+              <div class="resource-item"><strong>What it includes</strong>Phase-by-phase focus: study, simulation, small risk, review, refinement.</div>
+              <div class="resource-item"><strong>Best use</strong>Use it to avoid trying to master everything at once.</div>
+              <div class="resource-item"><strong>Goal</strong>Create realistic progress and reduce overwhelm.</div>
+            </div>
+            <div class="btn-row">
+              <a href="#" class="btn">Download PDF</a>
+              <a href="#" class="btn btn-secondary">Open template</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="gold-callout">
+          <strong>How to make this page even stronger later</strong>
+          Once you start creating real downloadable files, replace the placeholder buttons with your actual PDFs, spreadsheets, or documents.
+          Even a small resource library adds huge perceived value because it makes the course feel operational, not just educational.
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="lesson-head"><h3>Best resource habits</h3><div class="badge">Use these rules</div></div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong>Keep it simple</strong><span>Use only the checklists and templates that support your actual process.</span></div>
+              <div class="mini-card"><strong>Review weekly</strong><span>Resources create value only if they are revisited, not forgotten.</span></div>
+              <div class="mini-card"><strong>Link to your journal</strong><span>Use review sheets together with your journal stats and notes.</span></div>
+              <div class="mini-card"><strong>Update with experience</strong><span>As your trading improves, refine the templates to match your real workflow.</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Next step</h3><div class="badge">Finish strong</div></div>
+            <div class="callout">
+              Pick three resources from this page and make them part of your weekly routine: one for preparation, one for execution, and one for review.
+              The more consistently you use them, the more professional your process becomes.
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-cards">
+          <a href="case_studies.html">
+            <div class="nav-label">Previous</div>
+            <div class="nav-title">Case Studies</div>
+            <div class="nav-desc">Study real examples of the setups, triggers, management, and lessons from live charts.</div>
+          </a>
+          <a href="dashboard.html">
+            <div class="nav-label">Back to</div>
+            <div class="nav-title">Dashboard</div>
+            <div class="nav-desc">Return to the members dashboard and continue building your trading process.</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">MotivTrading — full course portal bundle.</div>
+  <script src="progress.js"></script>
+  <script type="module" src="../members-header.js"></script>
+</body>
+</html>

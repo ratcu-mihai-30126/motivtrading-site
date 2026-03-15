@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module" src="../js/access-check.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - MotivTrading</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../site-template.css" />
+</head>
+<body data-member-page="dashboard.html">
+<section class="hero">
+    <div class="container">
+      <div class="eyebrow">Members dashboard</div>
+      <h1>Your premium course system</h1>
+      <div class="lead">Study the six core modules, then use the playbooks, tools, journal, case studies, and resources to turn the course into a real trading operating system.</div>
+      <div class="progress-summary">
+        <div class="summary-card"><div class="summary-label">Lesson progress</div><div class="summary-value" data-dashboard-progress>0%</div><div class="summary-note">Saved in your browser</div></div>
+        <div class="summary-card"><div class="summary-label">Modules completed</div><div class="summary-value"><span data-completed-count>0</span>/<span data-total-modules>6</span></div><div class="summary-note">Core curriculum</div></div>
+        <div class="summary-card"><div class="summary-label">Next recommended</div><div class="summary-value" style="font-size:22px" data-next-title>Module 1 — Trading Foundations</div><div class="summary-note">Continue where you left off</div></div>
+        <div class="summary-card"><div class="summary-label">Support pages</div><div class="summary-value">5</div><div class="summary-note">Playbooks to resources</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container sidebar-layout">
+      <aside class="sidebar">
+        <div class="sidebar-title">Course Curriculum</div>
+        <div class="curriculum-label">Member progress</div>
+        <div class="progress-box progress-box-primary">
+          <div class="progress-meta">
+            <div class="progress-caption">Lesson progress</div>
+            <span data-progress-label>0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" data-progress-fill style="width:0%"></div></div>
+        </div>
+        <a class="active" href="dashboard.html"><strong>🏠 Dashboard</strong><span>Overview and roadmap</span></a>
+        <a href="module1_foundations.html" data-module-link="1"><strong>📘 Trading Foundations</strong><span>Build market context</span></a>
+        <a href="module2_market_structure.html" data-module-link="2"><strong>📊 Market Structure</strong><span>Read trend and range</span></a>
+        <a href="module3_entry_systems.html" data-module-link="3"><strong>🎯 Entry Systems</strong><span>Confirmation-based entries</span></a>
+        <a href="module4_execution.html" data-module-link="4"><strong>⚙️ Execution</strong><span>Management and targets</span></a>
+        <a href="module5_risk_management.html" data-module-link="5"><strong>🛡️ Risk Management</strong><span>Protect capital</span></a>
+        <a href="module6_psychology.html" data-module-link="6"><strong>🧠 Psychology</strong><span>Discipline and review</span></a>
+        <a href="playbooks.html"><strong>🗂️ Playbooks</strong><span>Repeatable setups</span></a>
+        <a href="tools.html"><strong>🧮 Tools</strong><span>Interactive calculators</span></a>
+        <a href="journal.html"><strong>📝 Journal</strong><span>Self-review system</span></a>
+        <a href="case_studies.html"><strong>📚 Case Studies</strong><span>Trade examples</span></a>
+        <a href="resources.html"><strong>📦 Resources</strong><span>Downloads and next steps</span></a>
+      </aside>
+
+      <div class="content-column">
+        <div class="next-step-card">
+          <div class="lesson-kicker">Next action</div>
+          <h3 data-next-title>Module 1 — Trading Foundations</h3>
+          <p>Use the roadmap below to move through the training. You can complete modules in any order, but the dashboard will always recommend the first unfinished module.</p>
+          <div class="btn-row">
+            <a href="module1_foundations.html" class="btn" data-start-course data-start-course-label="true">Continue with Module 1</a>
+            <a href="journal.html" class="btn-secondary">Open Journal</a>
+            <button class="btn-reset" type="button" data-reset-all-progress hidden>Reset all progress</button>
+          </div>
+          <div class="completion-banner" data-course-finished hidden>
+            <strong>Course completed</strong>
+            You have completed all six modules. Review the course from the start or use the support pages to keep sharpening execution.
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="lesson-panel">
+            <div class="lesson-kicker">Core roadmap</div>
+            <h3>Six-module learning path</h3>
+            <p>Each module is built as a premium lesson page with structured sections, chart application, mistakes to avoid, and an action step at the end.</p>
+            <div class="module-map">
+              <div class="module-item" data-module-card="1"><a href="module1_foundations.html"><div class="module-item-left"><strong>Module 1 — Trading Foundations</strong><span>Mindset, expectations, and risk-first thinking.</span></div><span class="status-pill">Available</span></a></div>
+              <div class="module-item" data-module-card="2"><a href="module2_market_structure.html"><div class="module-item-left"><strong>Module 2 — Market Structure</strong><span>Read trend, range, and transition cleanly.</span></div><span class="status-pill">Available</span></a></div>
+              <div class="module-item" data-module-card="3"><a href="module3_entry_systems.html"><div class="module-item-left"><strong>Module 3 — Entry Systems</strong><span>Turn context into executable trade triggers.</span></div><span class="status-pill">Available</span></a></div>
+              <div class="module-item" data-module-card="4"><a href="module4_execution.html"><div class="module-item-left"><strong>Module 4 — Execution</strong><span>Manage trades with predefined rules.</span></div><span class="status-pill">Available</span></a></div>
+              <div class="module-item" data-module-card="5"><a href="module5_risk_management.html"><div class="module-item-left"><strong>Module 5 — Risk Management</strong><span>Size correctly and protect capital.</span></div><span class="status-pill">Available</span></a></div>
+              <div class="module-item" data-module-card="6"><a href="module6_psychology.html"><div class="module-item-left"><strong>Module 6 — Psychology</strong><span>Build discipline, routine, and review.</span></div><span class="status-pill">Available</span></a></div>
+            </div>
+          </div>
+
+          <div class="lesson-panel">
+            <div class="lesson-kicker">Support system</div>
+            <h3>Turn lessons into execution</h3>
+            <p>The course is strongest when you combine the modules with the support pages below. That is how the portal becomes a real working trading system instead of just information.</p>
+            <div class="module-map">
+              <div class="module-item"><a href="playbooks.html"><div class="module-item-left"><strong>Playbooks</strong><span>Build repeatable setups you can recognize instantly.</span></div><span class="status-pill">System</span></a></div>
+              <div class="module-item"><a href="tools.html"><div class="module-item-left"><strong>Tools</strong><span>Use calculators to size trades and plan risk.</span></div><span class="status-pill">System</span></a></div>
+              <div class="module-item"><a href="journal.html"><div class="module-item-left"><strong>Journal</strong><span>Track trades, emotions, and process quality.</span></div><span class="status-pill">System</span></a></div>
+              <div class="module-item"><a href="case_studies.html"><div class="module-item-left"><strong>Case Studies</strong><span>See real chart examples and breakdowns.</span></div><span class="status-pill">System</span></a></div>
+              <div class="module-item"><a href="resources.html"><div class="module-item-left"><strong>Resources</strong><span>Keep templates, checklists, and reviews organized.</span></div><span class="status-pill">System</span></a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="lesson-head"><h3>Weekly workflow</h3><div class="badge">Recommended</div></div>
+            <div class="chapter-list">
+              <div class="chapter-item"><div class="chapter-num">1</div><div>Study one module and review the lesson outcomes.</div></div>
+              <div class="chapter-item"><div class="chapter-num">2</div><div>Open the tools page and define your size, risk, and daily limits.</div></div>
+              <div class="chapter-item"><div class="chapter-num">3</div><div>Trade only the playbook setups that match the context.</div></div>
+              <div class="chapter-item"><div class="chapter-num">4</div><div>Log each trade in the journal and compare with case studies.</div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>What changed in this build</h3><div class="badge">Premium upgrade</div></div>
+            <div class="chapter-list">
+              <div class="chapter-item"><div class="chapter-num">✓</div><div>All six modules now use a premium course lesson structure.</div></div>
+              <div class="chapter-item"><div class="chapter-num">✓</div><div>Dashboard progress, next-step logic, and reset controls are integrated.</div></div>
+              <div class="chapter-item"><div class="chapter-num">✓</div><div>Every lesson includes chapter navigation, chart application, and action steps.</div></div>
+              <div class="chapter-item"><div class="chapter-num">✓</div><div>Modules remain open, so students can revisit the course in any order.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">MotivTrading members portal • Premium course system</div>
+  <script src="progress.js"></script>
+  <script type="module" src="../members-header.js"></script>
+</body>
+</html>

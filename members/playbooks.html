@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module" src="../js/access-check.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playbooks - MotivTrading</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .content-column{min-width:0;}
+    .content-column .nav-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+    .content-column .nav-cards a{
+      display:block;
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      color:inherit;
+      text-decoration:none;
+    }
+    .content-column .nav-label{
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .content-column .nav-title{
+      font-size:20px;
+      font-weight:800;
+      margin-top:8px;
+    }
+    .content-column .nav-desc{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .playbook-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    .playbook-card{
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+    }
+    .playbook-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .setup-type{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold2);
+      margin-bottom:6px;
+    }
+    .setup-title{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.15;
+    }
+    .rr-badge{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      white-space:nowrap;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .playbook-desc{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+    .setup-list{
+      display:grid;
+      gap:10px;
+    }
+    .setup-item{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.025);
+    }
+    .setup-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
+    }
+    .stats-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .stat-pill{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.035);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .gold-callout{
+      border:1px solid rgba(214,170,86,.35);
+      background:rgba(214,170,86,.08);
+      border-radius:20px;
+      padding:18px;
+      margin-top:18px;
+    }
+    .gold-callout strong{
+      display:block;
+      margin-bottom:6px;
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.03);
+    }
+    @media (max-width: 1100px){
+      .content-column .nav-cards,
+      .playbook-grid,
+      .mini-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <link rel="stylesheet" href="../site-template.css" />
+</head>
+<body data-member-page="playbooks.html">
+<section class="hero">
+    <div class="container">
+      <div class="eyebrow">Strategy library</div>
+      <h1>Playbooks</h1>
+      <div class="lead">
+        This page turns theory into repeatable execution. Each playbook gives you a market condition, trigger, stop idea, target logic,
+        and the mistakes that usually ruin the setup. The goal is not to trade everything. The goal is to become excellent at a few repeatable patterns.
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container sidebar-layout">
+      <aside class="sidebar">
+        <div class="sidebar-title">Course Curriculum</div>
+        <div class="curriculum-label">Member progress</div>
+        <div class="progress-box progress-box-primary">
+          <div class="progress-meta">
+            <div class="progress-caption">Lesson progress</div>
+            <span data-progress-label>0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" data-progress-fill style="width:0%;"></div></div>
+        </div>
+        <a href="dashboard.html"><strong>🏠 Dashboard</strong><span>Overview and roadmap</span></a>
+        <a href="module1_foundations.html" data-module-link="1"><strong>📘 Trading Foundations</strong><span>Build market context</span></a>
+        <a href="module2_market_structure.html" data-module-link="2"><strong>📊 Market Structure</strong><span>Read trend and range</span></a>
+        <a href="module3_entry_systems.html" data-module-link="3"><strong>🎯 Entry Systems</strong><span>Confirmation-based entries</span></a>
+        <a href="module4_execution.html" data-module-link="4"><strong>⚙️ Execution</strong><span>Management and targets</span></a>
+        <a href="module5_risk_management.html" data-module-link="5"><strong>🛡️ Risk Management</strong><span>Protect capital</span></a>
+        <a href="module6_psychology.html" data-module-link="6"><strong>🧠 Psychology</strong><span>Discipline and review</span></a>
+        <a class="active" href="playbooks.html" data-support-link="true"><strong>🗂️ Playbooks</strong><span>Repeatable setups</span></a>
+        <a href="tools.html" data-support-link="true"><strong>🧮 Tools</strong><span>Interactive calculators</span></a>
+        <a href="journal.html" data-support-link="true"><strong>📝 Journal</strong><span>Self-review system</span></a>
+        <a href="case_studies.html" data-support-link="true"><strong>📚 Case Studies</strong><span>Trade examples</span></a>
+        <a href="resources.html" data-support-link="true"><strong>📦 Resources</strong><span>Downloads and next steps</span></a>
+      </aside>
+
+      <div class="content-column">
+        <div class="grid-2">
+          <div class="card">
+            <div class="lesson-head"><h3>How to use the playbooks</h3><div class="badge">Start here</div></div>
+            <p>
+              A playbook is not a prediction machine. It is a filter. First identify the market context, then match the chart to one of the setups below,
+              then wait for the trigger. If the chart does not clearly fit the playbook, do nothing.
+            </p>
+            <div class="pills">
+              <div class="pill">Context first</div>
+              <div class="pill">Trigger second</div>
+              <div class="pill">Invalidation always</div>
+              <div class="pill">Repeatable only</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Playbook rule</h3><div class="badge">Important</div></div>
+            <p>
+              You do not need ten setups. You need two or three setups you can execute with consistency. These playbooks are designed to give structure,
+              not to make you overtrade. Pick the ones that match your session, personality, and risk tolerance.
+            </p>
+          </div>
+        </div>
+
+        <div class="playbook-grid">
+
+          <div class="playbook-card">
+            <div class="playbook-top">
+              <div>
+                <div class="setup-type">Momentum setup</div>
+                <div class="setup-title">Opening Range Breakout</div>
+              </div>
+              <div class="rr-badge">Target: 2R+</div>
+            </div>
+            <div class="playbook-desc">
+              Best used when the session opens with expansion pressure and price is clearly compressing beneath or above a key intraday level.
+            </div>
+            <div class="setup-list">
+              <div class="setup-item"><strong>Market condition</strong>Trending day or strong session open with volatility expansion.</div>
+              <div class="setup-item"><strong>Entry trigger</strong>Break and hold outside the opening range with momentum or reclaim after a sweep.</div>
+              <div class="setup-item"><strong>Stop logic</strong>Below the opposite side of the range or beneath the breakout failure point.</div>
+              <div class="setup-item"><strong>Target logic</strong>Next liquidity pool, prior session level, or fixed 2R objective.</div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">Best time: session open</div>
+              <div class="stat-pill">Avoid: low volatility</div>
+              <div class="stat-pill">Style: aggressive momentum</div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div class="playbook-top">
+              <div>
+                <div class="setup-type">Continuation setup</div>
+                <div class="setup-title">Trend Pullback Entry</div>
+              </div>
+              <div class="rr-badge">Target: 1.5R–3R</div>
+            </div>
+            <div class="playbook-desc">
+              A clean continuation setup where price returns into value before the trend resumes. Usually cleaner than chasing breakouts.
+            </div>
+            <div class="setup-list">
+              <div class="setup-item"><strong>Market condition</strong>Established trend with clear higher highs/higher lows or lower highs/lower lows.</div>
+              <div class="setup-item"><strong>Entry trigger</strong>Rejection from prior structure, reclaim of a level, or break of minor counter-trend structure.</div>
+              <div class="setup-item"><strong>Stop logic</strong>Beyond the pullback failure point or structural invalidation.</div>
+              <div class="setup-item"><strong>Target logic</strong>Trend continuation into prior high/low extension or next liquidity zone.</div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">Best time: after first impulse</div>
+              <div class="stat-pill">Avoid: chop</div>
+              <div class="stat-pill">Style: patient</div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div class="playbook-top">
+              <div>
+                <div class="setup-type">Reversal setup</div>
+                <div class="setup-title">Liquidity Sweep Reversal</div>
+              </div>
+              <div class="rr-badge">Target: 2R+</div>
+            </div>
+            <div class="playbook-desc">
+              Price runs obvious highs or lows, takes stops, then quickly rejects and reclaims. This setup works when the sweep changes short-term control.
+            </div>
+            <div class="setup-list">
+              <div class="setup-item"><strong>Market condition</strong>Obvious equal highs/lows, range extremes, or crowded liquidity areas.</div>
+              <div class="setup-item"><strong>Entry trigger</strong>Fast rejection candle, reclaim of the swept level, or confirmation shift in micro structure.</div>
+              <div class="setup-item"><strong>Stop logic</strong>Beyond the sweep extreme.</div>
+              <div class="setup-item"><strong>Target logic</strong>Return to mid-range, opposite side of range, or nearest structural objective.</div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">Best time: around key levels</div>
+              <div class="stat-pill">Avoid: true breakout conditions</div>
+              <div class="stat-pill">Style: tactical reversal</div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div class="playbook-top">
+              <div>
+                <div class="setup-type">Trap setup</div>
+                <div class="setup-title">Failed Breakout</div>
+              </div>
+              <div class="rr-badge">Target: 1.5R–2.5R</div>
+            </div>
+            <div class="playbook-desc">
+              A breakout appears strong, attracts late traders, then fails and rotates back through the level. This is powerful when the market is actually ranging.
+            </div>
+            <div class="setup-list">
+              <div class="setup-item"><strong>Market condition</strong>Range environment, low commitment beyond key level, poor follow-through after breakout.</div>
+              <div class="setup-item"><strong>Entry trigger</strong>Breakout fails, price re-enters the range, and structure confirms rejection.</div>
+              <div class="setup-item"><strong>Stop logic</strong>Beyond the failed breakout high or low.</div>
+              <div class="setup-item"><strong>Target logic</strong>Middle of range first, opposite side if momentum continues.</div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">Best time: range markets</div>
+              <div class="stat-pill">Avoid: trend day</div>
+              <div class="stat-pill">Style: fade/trap</div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div class="playbook-top">
+              <div>
+                <div class="setup-type">Expansion setup</div>
+                <div class="setup-title">Range Expansion Break</div>
+              </div>
+              <div class="rr-badge">Target: 2R+</div>
+            </div>
+            <div class="playbook-desc">
+              After a period of compression, price leaves the range with intent. This works when volatility is shifting from contraction to expansion.
+            </div>
+            <div class="setup-list">
+              <div class="setup-item"><strong>Market condition</strong>Tight range, repeated tests, building pressure, obvious breakout boundary.</div>
+              <div class="setup-item"><strong>Entry trigger</strong>Strong candle close outside the range or retest-and-go pattern.</div>
+              <div class="setup-item"><strong>Stop logic</strong>Back inside the broken range or beneath the retest low/high.</div>
+              <div class="setup-item"><strong>Target logic</strong>Measured move, next liquidity zone, or structural projection.</div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">Best time: after compression</div>
+              <div class="stat-pill">Avoid: fakeouts without volume</div>
+              <div class="stat-pill">Style: breakout follow-through</div>
+            </div>
+          </div>
+
+          <div class="playbook-card">
+            <div class="playbook-top">
+              <div>
+                <div class="setup-type">Session setup</div>
+                <div class="setup-title">Session Momentum Shift</div>
+              </div>
+              <div class="rr-badge">Target: 1R–2R</div>
+            </div>
+            <div class="playbook-desc">
+              Useful when one session sets the range and the next session re-prices aggressively through it. Often strongest around London or New York transition.
+            </div>
+            <div class="setup-list">
+              <div class="setup-item"><strong>Market condition</strong>Previous session leaves clear highs/lows and current session shows directional intent.</div>
+              <div class="setup-item"><strong>Entry trigger</strong>Sweep of session range followed by reclaim and continuation, or clean break with acceptance.</div>
+              <div class="setup-item"><strong>Stop logic</strong>Beyond the shift level or session sweep extreme.</div>
+              <div class="setup-item"><strong>Target logic</strong>Opposite side liquidity, session extension, or daily range completion.</div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">Best time: session change</div>
+              <div class="stat-pill">Avoid: midday drift</div>
+              <div class="stat-pill">Style: session-based</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="gold-callout">
+          <strong>How to choose your best playbook</strong>
+          Start by journaling which setups appear most often during your preferred trading hours. Then choose the two setups that feel the clearest,
+          not the most exciting. A narrower playbook usually produces better discipline, cleaner statistics, and faster skill growth.
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="lesson-head"><h3>Common playbook mistakes</h3><div class="badge">Avoid these</div></div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong>Forcing the match</strong><br><span>Trying to label every chart as a setup when context is unclear.</span></div>
+              <div class="mini-card"><strong>Ignoring market condition</strong><br><span>Taking breakout setups in range conditions or reversal setups on trend days.</span></div>
+              <div class="mini-card"><strong>Skipping confirmation</strong><br><span>Entering just because the setup “looks close” before the trigger appears.</span></div>
+              <div class="mini-card"><strong>Changing rules live</strong><br><span>Adjusting stop and target logic based on hope instead of the playbook.</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Homework</h3><div class="badge">Build your edge</div></div>
+            <div class="callout">
+              Choose your top two favorite playbooks from this page. For the next 10 chart screenshots you review, label each one with:
+              market condition, chosen playbook, trigger, stop location, and target logic. This will show you which setups you truly understand.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card" style="margin-top:18px;">
+          <div class="lesson-head"><h3>Chart-driven playbooks</h3><div class="badge">Premium format</div></div>
+          <p>These examples now use a full-width trading playbook layout instead of small gallery cards. This makes each setup feel more premium, more structured, and much easier for students to actually study.</p>
+        </div>
+
+        <div class="setup-showcase" style="margin-top:18px;">
+          <div class="setup-card">
+            <div class="setup-badge">MT1 • Breakout model</div>
+            <h3 class="setup-title-xl">Breakout from Consolidation</h3>
+            <p class="setup-intro">One of the easiest high-quality setups to recognize. Price coils into a tight range, liquidity builds, and the move expands once the range finally breaks with commitment.</p>
+            <div class="setup-chart-frame">
+              <img src="breakout-consolidation.png" alt="Breakout from consolidation" class="setup-chart-full" />
+              <div class="setup-caption">Teach students to focus on the base, the breakout candle, and the first logical expansion target.</div>
+            </div>
+            <div class="setup-detail-grid">
+              <div class="setup-detail"><h4>Explanation</h4><p>This playbook works because compression creates a visible imbalance waiting to release. Once the range breaks, the expansion often becomes the cleanest part of the move.</p></div>
+              <div class="setup-detail"><h4>Entry</h4><p>Enter on the breakout close or after the first retest if the level continues to hold.</p></div>
+              <div class="setup-detail"><h4>Stop</h4><p>Place the stop beneath the consolidation range or beneath the specific failure point that would invalidate acceptance above the level.</p></div>
+              <div class="setup-detail"><h4>Targets</h4><p>Take profit into the next liquidity pocket, prior swing, or measured move projection.</p></div>
+            </div>
+            <div class="setup-stat-row">
+              <div class="setup-stat">Risk / Reward • 1:2 to 1:4</div>
+              <div class="setup-stat">Best environment • expansion after compression</div>
+              <div class="setup-stat">Main mistake • chasing after extension</div>
+            </div>
+          </div>
+
+          <div class="setup-card">
+            <div class="setup-badge">MT2 • Continuation model</div>
+            <h3 class="setup-title-xl">Flag Pattern Continuation</h3>
+            <p class="setup-intro">A clean impulse move pauses into a controlled pullback and then resolves in the original direction. This is one of the best setups in the whole course for teaching patience and timing.</p>
+            <div class="setup-chart-frame">
+              <img src="flag-pattern.png" alt="Flag pattern continuation" class="setup-chart-full" />
+              <div class="setup-caption">The quality of the setup comes from the impulse before the flag, not just from the breakout itself.</div>
+            </div>
+            <div class="setup-detail-grid">
+              <div class="setup-detail"><h4>Explanation</h4><p>The impulse proves strength, the flag shows temporary pause, and the breakout confirms that the original order flow is resuming.</p></div>
+              <div class="setup-detail"><h4>Entry</h4><p>Enter on the flag break or after a tight retest once the structure confirms continuation.</p></div>
+              <div class="setup-detail"><h4>Stop</h4><p>Place the stop beyond the flag low or beyond the structural point that would invalidate continuation.</p></div>
+              <div class="setup-detail"><h4>Targets</h4><p>Use the next expansion objective, previous trend extension, or a measured move based on the original impulse.</p></div>
+            </div>
+            <div class="setup-stat-row">
+              <div class="setup-stat">Risk / Reward • 1:3 to 1:5</div>
+              <div class="setup-stat">Best environment • clean trend continuation</div>
+              <div class="setup-stat">Main mistake • forcing flags without impulse</div>
+            </div>
+          </div>
+
+          <div class="setup-card">
+            <div class="setup-badge">MT3 • Execution model</div>
+            <h3 class="setup-title-xl">Two-Target Breakdown</h3>
+            <p class="setup-intro">This playbook combines entry quality with trade management. It teaches students how to secure profits at target one while still leaving room for a larger move into target two.</p>
+            <div class="setup-chart-frame">
+              <img src="breakout-two-targets.png" alt="Two target breakdown" class="setup-chart-full" />
+              <div class="setup-caption">A very strong chart for teaching scale-out execution instead of all-in, all-out decision making.</div>
+            </div>
+            <div class="setup-detail-grid">
+              <div class="setup-detail"><h4>Explanation</h4><p>Once the move confirms, the trade can be split into a shorter objective and a runner. This improves discipline because profits are handled systematically.</p></div>
+              <div class="setup-detail"><h4>Entry</h4><p>Enter only after the breakdown is accepted and the first target still offers enough room relative to the stop.</p></div>
+              <div class="setup-detail"><h4>Stop</h4><p>Keep the stop above the breakdown failure point so risk remains tight and logical.</p></div>
+              <div class="setup-detail"><h4>Targets</h4><p>Target one secures the trade. Target two captures the larger move into the next clear downside objective.</p></div>
+            </div>
+            <div class="setup-stat-row">
+              <div class="setup-stat">Risk / Reward • 1:2 first target, 1:4+ runner</div>
+              <div class="setup-stat">Best environment • directional follow-through</div>
+              <div class="setup-stat">Main mistake • taking full profit too soon</div>
+            </div>
+          </div>
+        </div>
+<div class="nav-cards">
+          <a href="module6_psychology.html">
+            <div class="nav-label">Previous</div>
+            <div class="nav-title">Psychology</div>
+            <div class="nav-desc">Build discipline, emotional control, and routines that support consistency.</div>
+          </a>
+          <a href="tools.html">
+            <div class="nav-label">Next section</div>
+            <div class="nav-title">Tools</div>
+            <div class="nav-desc">Use calculators and utilities to support execution and risk decisions.</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">MotivTrading — full course portal bundle.</div>
+  <script src="progress.js"></script>
+  <script type="module" src="../members-header.js"></script>
+</body>
+</html>

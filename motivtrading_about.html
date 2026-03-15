@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<title>About MotivTrading</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root{
+      --bg:#07101d;
+      --bg-soft:#0b1527;
+      --panel:rgba(255,255,255,.055);
+      --panel-strong:rgba(255,255,255,.08);
+      --border:rgba(255,255,255,.11);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --muted-2:rgba(255,255,255,.52);
+      --gold:#d7b56d;
+      --gold-2:#f0cf84;
+      --green:#22c17a;
+      --red:#e16464;
+      --shadow:0 24px 60px rgba(0,0,0,.28);
+      --radius:28px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top, rgba(215,181,109,.12), transparent 22%),
+        linear-gradient(180deg, #0b1527 0%, #07101d 40%, #07101d 100%);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+    .site-header{
+      position:sticky; top:0; z-index:60;
+      background:rgba(7,16,29,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .site-header-inner{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+      min-height:78px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{
+      width:48px; height:48px; border-radius:18px; display:grid; place-items:center;
+      background:#0f1930; color:var(--gold-2); font-weight:800;
+      border:1px solid rgba(215,181,109,.33); box-shadow:var(--shadow)
+    }
+    .brand-top{font-size:11px; letter-spacing:.30em; text-transform:uppercase; color:var(--gold)}
+    .brand-bottom{font-size:18px; font-weight:800}
+    .main-nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .main-nav a{
+      padding:10px 14px; border-radius:999px; color:var(--muted);
+      background:rgba(255,255,255,.04); border:1px solid transparent; font-size:14px;
+      transition:.2s ease;
+    }
+    .main-nav a:hover,.main-nav a.active{color:#fff; border-color:var(--border); background:rgba(255,255,255,.07)}
+    .hero{padding:78px 0 64px; border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:36px; align-items:center}
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(215,181,109,.30); background:rgba(255,255,255,.04);
+      color:var(--gold-2); font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+    }
+    h1{font-size:clamp(40px, 5vw, 68px); line-height:1.03; letter-spacing:-.04em; margin:22px 0 16px}
+    .lead{max-width:720px; color:var(--muted); font-size:18px; line-height:1.9}
+    .cta-row{display:flex; flex-wrap:wrap; gap:14px; margin-top:28px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      min-height:54px; padding:0 24px; border-radius:18px; font-weight:800;
+      border:1px solid transparent; transition:.2s ease; cursor:pointer;
+    }
+    .btn-primary{background:var(--gold); color:#07101d}
+    .btn-primary:hover{filter:brightness(1.04); transform:translateY(-1px)}
+    .btn-secondary{background:rgba(255,255,255,.05); border-color:var(--border); color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,.09)}
+    .section{padding:88px 0}
+    .section-head small{display:block; color:var(--gold); letter-spacing:.32em; text-transform:uppercase; font-size:11px}
+    .section-head h2{font-size:clamp(30px,4vw,48px); line-height:1.06; letter-spacing:-.03em; margin:14px 0 12px}
+    .section-head p{max-width:850px; margin:0; color:var(--muted); line-height:1.9}
+    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:34px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:34px}
+    .card{padding:26px; border-radius:var(--radius); background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow)}
+    .card h3{margin:0 0 12px; font-size:22px}
+    .card p{margin:0; color:var(--muted)}
+    .pill-list{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+    .pill{padding:10px 14px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.04); color:var(--muted)}
+    .hero-card{
+      border-radius:30px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      padding:22px; box-shadow:var(--shadow)
+    }
+    .hero-card-inner{border-radius:24px; border:1px solid var(--border); background:#0b1629; padding:24px}
+    .stat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:18px}
+    .stat{padding:20px; border-radius:22px; background:var(--panel); border:1px solid var(--border)}
+    .stat strong{display:block; color:var(--gold-2); font-size:30px; line-height:1; margin-bottom:8px}
+    .stat span{display:block; color:var(--muted-2); font-size:13px}
+    .icon-box{width:52px; height:52px; border-radius:18px; display:grid; place-items:center; background:rgba(215,181,109,.10); border:1px solid rgba(215,181,109,.20); color:var(--gold-2); font-weight:800}
+    .stack{display:grid; gap:14px}
+    .line-item{display:flex; gap:12px; align-items:flex-start; padding:15px 16px; border-radius:18px; background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.08); color:var(--muted)}
+    .line-item .check{color:var(--gold-2); font-weight:800; line-height:1; margin-top:1px}
+    .two-col{display:grid; grid-template-columns:1.1fr .9fr; gap:22px; margin-top:34px}
+    .value-list{display:grid; gap:12px}
+    .value-item{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08)}
+    .value-item span{color:var(--muted)}
+    .value-item strong{color:var(--gold-2)}
+    .feature-list{display:grid; gap:12px; margin-top:20px}
+    .feature{display:flex; gap:12px; align-items:center; padding:15px 16px; border-radius:18px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.05); color:var(--muted)}
+    .dot{width:10px; height:10px; border-radius:999px; background:var(--gold); flex:none}
+    .form-grid{display:grid; gap:14px; margin-top:18px}
+    input, textarea, select{
+      width:100%; background:#0c1528; color:#fff; border:1px solid var(--border);
+      border-radius:16px; padding:16px 18px; font:inherit; outline:none;
+    }
+    textarea{min-height:140px; resize:vertical}
+    .fine{color:var(--muted-2); font-size:13px}
+    .footer{padding:26px 0 50px; text-align:center; color:var(--muted-2); font-size:13px}
+    .proof-card{overflow:hidden; border-radius:28px; border:1px solid var(--border); background:#0d172a; box-shadow:var(--shadow)}
+    .proof-card img{width:100%; height:280px; object-fit:cover; border-bottom:1px solid var(--border); background:#0b1527}
+    .proof-copy{padding:22px}
+    .proof-copy h3{margin:0 0 10px; font-size:22px}
+    .proof-copy p{margin:0; color:var(--muted)}
+    @media (max-width: 980px){
+      .site-header-inner{padding:14px 0; align-items:flex-start; flex-direction:column}
+      .main-nav{width:100%; justify-content:flex-start}
+      .hero-grid,.two-col,.grid-3,.grid-2{grid-template-columns:1fr}
+    }
+  </style>
+
+  <link rel="stylesheet" href="site-template.css" />
+</head><body>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">About the academy</div>
+      <h1>Built for traders who want structure, not more random noise.</h1>
+      <p class="lead">MotivTrading was created to help beginner and developing traders build a repeatable process around market structure, breakouts, liquidity, risk management, and review. It is designed to feel clear, practical, and serious from day one.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="motivtrading_start.html">See how the course works</a>
+        <a class="btn btn-secondary" href="motivtrading_trades.html">View trade examples</a>
+      </div>
+      <div class="pill-list">
+        <div class="pill">Process over hype</div>
+        <div class="pill">Execution over theory</div>
+        <div class="pill">Risk first mindset</div>
+      </div>
+    </div>
+    <div class="hero-card"><div class="hero-card-inner">
+      <div class="section-head"><small>Core philosophy</small><h2 style="font-size:34px;margin-top:10px">A rules-based process beats emotional decision-making.</h2></div>
+      <div class="feature-list">
+        <div class="feature"><div class="dot"></div><div>Trading is treated as a probability business, not a prediction contest.</div></div>
+        <div class="feature"><div class="dot"></div><div>Risk management is part of the lesson system, not an afterthought.</div></div>
+        <div class="feature"><div class="dot"></div><div>Students are pushed toward journaling, review, and repeatable routines.</div></div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><strong>6</strong><span>Core modules to build the full framework</span></div>
+        <div class="stat"><strong>1</strong><span>Unified student portal built around execution</span></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <small>Why it exists</small>
+      <h2>Most traders already have enough content. What they usually lack is a usable process.</h2>
+      <p>The goal of MotivTrading is to close that gap. Instead of just throwing lessons at the student, the program is meant to connect market understanding, entries, risk control, trade journaling, and review into one place.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><h3>Clarity</h3><p>Break complex market behavior into lessons that are easier to study, revisit, and apply without overwhelm.</p></div>
+      <div class="card"><h3>Discipline</h3><p>Keep the focus on realistic expectations, clean execution, and respecting invalidation rather than chasing excitement.</p></div>
+      <div class="card"><h3>Consistency</h3><p>Give students a framework they can repeat enough times to actually generate useful feedback and improvement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-col">
+    <div class="card">
+      <div class="section-head"><small>What makes it different</small><h2 style="font-size:38px">Built around a trading framework, not random disconnected lessons.</h2></div>
+      <div class="stack">
+        <div class="line-item"><div class="check">✓</div><div>Premium lesson pages with objectives, key ideas, examples, checklists, and action steps.</div></div>
+        <div class="line-item"><div class="check">✓</div><div>A members area that includes tools, journal workflow, playbooks, and case-study style pages.</div></div>
+        <div class="line-item"><div class="check">✓</div><div>Progress tracking that supports rewatching and reviewing lessons instead of forcing a rigid path.</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-head"><small>Who it is for</small><h2 style="font-size:38px">Best for traders who want a repeatable decision-making process.</h2></div>
+      <div class="value-list">
+        <div class="value-item"><span>Self-taught traders who need more structure</span><strong>Ideal</strong></div>
+        <div class="value-item"><span>Traders struggling with discipline and inconsistency</span><strong>Ideal</strong></div>
+        <div class="value-item"><span>People looking for gambling-style promises</span><strong>Not a fit</strong></div>
+        <div class="value-item"><span>Students willing to journal and review</span><strong>Ideal</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">MotivTrading — premium trading education, structure, and process.</div>
+</footer>
+
+  <script type="module" src="public-header.js"></script>
+</body></html>

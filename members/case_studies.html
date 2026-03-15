@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module" src="../js/access-check.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies - MotivTrading</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .content-column{min-width:0;}
+    .content-column .nav-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+    .content-column .nav-cards a{
+      display:block;
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      color:inherit;
+      text-decoration:none;
+    }
+    .content-column .nav-label{
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .content-column .nav-title{
+      font-size:20px;
+      font-weight:800;
+      margin-top:8px;
+    }
+    .content-column .nav-desc{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .study-card{
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+      margin-top:18px;
+    }
+    .study-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .study-kicker{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold2);
+      margin-bottom:6px;
+    }
+    .study-title{
+      font-size:26px;
+      font-weight:800;
+      line-height:1.12;
+    }
+    .study-badge{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .study-desc{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+    .study-layout{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+      align-items:start;
+    }
+    .chart-box{
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+    }
+    .chart-box img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:820px;
+      object-fit:contain;
+      background:#08101d;
+      padding:10px;
+    }
+    .analysis-grid{
+      display:grid;
+      gap:12px;
+    }
+    .analysis-item{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.025);
+    }
+    .analysis-item strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
+    }
+    .meta-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .meta-pill{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.035);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .mini-card strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .gold-callout{
+      border:1px solid rgba(214,170,86,.35);
+      background:rgba(214,170,86,.08);
+      border-radius:20px;
+      padding:18px;
+      margin-top:18px;
+    }
+    .gold-callout strong{
+      display:block;
+      margin-bottom:6px;
+    }
+    @media (max-width: 1100px){
+      .content-column .nav-cards,
+      .study-layout,
+      .mini-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <link rel="stylesheet" href="../site-template.css" />
+</head>
+<body data-member-page="case_studies.html">
+<section class="hero">
+    <div class="container">
+      <div class="eyebrow">Real trade breakdowns</div>
+      <h1>Case Studies</h1>
+      <div class="lead">
+        This page shows how the course concepts look on real charts. Each study breaks down the market context, setup, entry trigger,
+        stop placement, target logic, result, and the lesson that matters most.
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container sidebar-layout">
+      <aside class="sidebar">
+        <div class="sidebar-title">Course Curriculum</div>
+        <div class="curriculum-label">Member progress</div>
+        <div class="progress-box progress-box-primary">
+          <div class="progress-meta">
+            <div class="progress-caption">Lesson progress</div>
+            <span data-progress-label>0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" data-progress-fill style="width:0%;"></div></div>
+        </div>
+        <a href="dashboard.html"><strong>🏠 Dashboard</strong><span>Overview and roadmap</span></a>
+        <a href="module1_foundations.html" data-module-link="1"><strong>📘 Trading Foundations</strong><span>Build market context</span></a>
+        <a href="module2_market_structure.html" data-module-link="2"><strong>📊 Market Structure</strong><span>Read trend and range</span></a>
+        <a href="module3_entry_systems.html" data-module-link="3"><strong>🎯 Entry Systems</strong><span>Confirmation-based entries</span></a>
+        <a href="module4_execution.html" data-module-link="4"><strong>⚙️ Execution</strong><span>Management and targets</span></a>
+        <a href="module5_risk_management.html" data-module-link="5"><strong>🛡️ Risk Management</strong><span>Protect capital</span></a>
+        <a href="module6_psychology.html" data-module-link="6"><strong>🧠 Psychology</strong><span>Discipline and review</span></a>
+        <a href="playbooks.html" data-support-link="true"><strong>🗂️ Playbooks</strong><span>Repeatable setups</span></a>
+        <a href="tools.html" data-support-link="true"><strong>🧮 Tools</strong><span>Interactive calculators</span></a>
+        <a href="journal.html" data-support-link="true"><strong>📝 Journal</strong><span>Self-review system</span></a>
+        <a class="active" href="case_studies.html" data-support-link="true"><strong>📚 Case Studies</strong><span>Trade examples</span></a>
+        <a href="resources.html" data-support-link="true"><strong>📦 Resources</strong><span>Downloads and next steps</span></a>
+      </aside>
+
+      <div class="content-column">
+        <div class="grid-2">
+          <div class="card">
+            <div class="lesson-head"><h3>How to use case studies</h3><div class="badge">Study correctly</div></div>
+            <p>
+              Do not just look at the outcome. Start with context, then identify the setup, then read the trigger and invalidation.
+              The goal is to understand why the trade made sense before you see whether it won or lost.
+            </p>
+            <div class="pills">
+              <div class="pill">Context first</div>
+              <div class="pill">Setup second</div>
+              <div class="pill">Trigger third</div>
+              <div class="pill">Result last</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Important rule</h3><div class="badge">Professional mindset</div></div>
+            <p>
+              A good case study can still show a losing trade. The job of the page is not to pretend every trade wins.
+              The job is to show clean logic, disciplined execution, and the lesson that can be repeated next time.
+            </p>
+          </div>
+        </div>
+
+        <div class="study-card">
+          <div class="study-top">
+            <div>
+              <div class="study-kicker">Case study 01</div>
+              <div class="study-title">Opening Range Breakout on Session Expansion</div>
+            </div>
+            <div class="study-badge">Result: +2.1R</div>
+          </div>
+          <div class="study-desc">
+            A momentum example where the market opened with pressure, compressed near a key level, then expanded with acceptance.
+          </div>
+          <div class="study-layout">
+            <div class="chart-box">
+              <img src="trade1.png" alt="Opening Range Breakout case study">
+            </div>
+            <div class="analysis-grid">
+              <div class="analysis-item"><strong>Context</strong>Volatility expanded at the session open and price held near the top of the opening range instead of fading.</div>
+              <div class="analysis-item"><strong>Setup</strong>Opening Range Breakout from a compressed intraday structure.</div>
+              <div class="analysis-item"><strong>Entry trigger</strong>Strong break and hold above the range with immediate continuation.</div>
+              <div class="analysis-item"><strong>Stop logic</strong>Below the breakout failure point and back inside the opening range.</div>
+              <div class="analysis-item"><strong>Target logic</strong>Next liquidity area and fixed 2R objective.</div>
+              <div class="analysis-item"><strong>Main lesson</strong>Breakouts work best when price has room to move and does not immediately reject the level.</div>
+            </div>
+          </div>
+          <div class="meta-pills">
+            <div class="meta-pill">Playbook: ORB</div>
+            <div class="meta-pill">Bias: Long</div>
+            <div class="meta-pill">Management: partial + runner</div>
+            <div class="meta-pill">Execution grade: A</div>
+          </div>
+        </div>
+
+        <div class="study-card">
+          <div class="study-top">
+            <div>
+              <div class="study-kicker">Case study 02</div>
+              <div class="study-title">Trend Pullback into Prior Structure</div>
+            </div>
+            <div class="study-badge">Result: +1.8R</div>
+          </div>
+          <div class="study-desc">
+            A continuation setup where price retraced into value, held structure, and resumed the dominant directional move.
+          </div>
+          <div class="study-layout">
+            <div class="chart-box">
+              <img src="trade2.png" alt="Trend Pullback case study">
+            </div>
+            <div class="analysis-grid">
+              <div class="analysis-item"><strong>Context</strong>The market was already printing continuation swings and the pullback happened into a meaningful structural level.</div>
+              <div class="analysis-item"><strong>Setup</strong>Trend Pullback Entry aligned with the larger directional bias.</div>
+              <div class="analysis-item"><strong>Entry trigger</strong>Rejection from the zone followed by break of minor counter-trend structure.</div>
+              <div class="analysis-item"><strong>Stop logic</strong>Beyond the pullback low that would invalidate continuation.</div>
+              <div class="analysis-item"><strong>Target logic</strong>Retest of the prior high and extension toward the next liquidity pocket.</div>
+              <div class="analysis-item"><strong>Main lesson</strong>Pullbacks often offer cleaner entries than chasing momentum after the move has already expanded.</div>
+            </div>
+          </div>
+          <div class="meta-pills">
+            <div class="meta-pill">Playbook: Trend Pullback</div>
+            <div class="meta-pill">Bias: Long</div>
+            <div class="meta-pill">Management: hold to target</div>
+            <div class="meta-pill">Execution grade: A-</div>
+          </div>
+        </div>
+
+        <div class="study-card">
+          <div class="study-top">
+            <div>
+              <div class="study-kicker">Case study 03</div>
+              <div class="study-title">Liquidity Sweep Reversal at a Range Extreme</div>
+            </div>
+            <div class="study-badge">Result: +2.4R</div>
+          </div>
+          <div class="study-desc">
+            Price swept an obvious extreme, took stops, then quickly reclaimed the level and rotated back into the range.
+          </div>
+          <div class="study-layout">
+            <div class="chart-box">
+              <img src="trade3.png" alt="Liquidity Sweep Reversal case study">
+            </div>
+            <div class="analysis-grid">
+              <div class="analysis-item"><strong>Context</strong>Equal highs/lows or obvious range boundaries created a visible liquidity pool.</div>
+              <div class="analysis-item"><strong>Setup</strong>Liquidity Sweep Reversal after a stop run beyond the extreme.</div>
+              <div class="analysis-item"><strong>Entry trigger</strong>Fast reclaim of the swept level with confirmation shift in short-term structure.</div>
+              <div class="analysis-item"><strong>Stop logic</strong>Beyond the sweep wick or the rejection extreme.</div>
+              <div class="analysis-item"><strong>Target logic</strong>Return to the middle of the range first, then rotation to the opposite side.</div>
+              <div class="analysis-item"><strong>Main lesson</strong>Not every break is true acceptance. Sometimes the best opportunity is the failure after the sweep.</div>
+            </div>
+          </div>
+          <div class="meta-pills">
+            <div class="meta-pill">Playbook: Sweep Reversal</div>
+            <div class="meta-pill">Bias: Counter-move</div>
+            <div class="meta-pill">Management: partial at mid-range</div>
+            <div class="meta-pill">Execution grade: B+</div>
+          </div>
+        </div>
+
+        <div class="study-card">
+          <div class="study-top">
+            <div>
+              <div class="study-kicker">Case study 04</div>
+              <div class="study-title">Execution Example: Management from Entry to Exit</div>
+            </div>
+            <div class="study-badge">Result: +1.3R</div>
+          </div>
+          <div class="study-desc">
+            This study focuses less on the setup itself and more on in-trade management: partials, stop discipline, and staying aligned with the plan.
+          </div>
+          <div class="study-layout">
+            <div class="chart-box">
+              <img src="trade4.png" alt="Execution case study">
+            </div>
+            <div class="analysis-grid">
+              <div class="analysis-item"><strong>Context</strong>The idea was valid, but the key question was whether management would protect the edge.</div>
+              <div class="analysis-item"><strong>Setup</strong>Confirmed entry aligned with structure and target logic.</div>
+              <div class="analysis-item"><strong>Entry trigger</strong>Executed at the planned confirmation point without chasing.</div>
+              <div class="analysis-item"><strong>Stop logic</strong>Structural invalidation remained untouched until the trade advanced.</div>
+              <div class="analysis-item"><strong>Target logic</strong>Partial was taken at the first objective and the remainder was managed according to plan.</div>
+              <div class="analysis-item"><strong>Main lesson</strong>Even a modest win becomes valuable when execution is clean and repeatable.</div>
+            </div>
+          </div>
+          <div class="meta-pills">
+            <div class="meta-pill">Focus: Execution</div>
+            <div class="meta-pill">Bias: Planned</div>
+            <div class="meta-pill">Management: scale-out</div>
+            <div class="meta-pill">Execution grade: A</div>
+          </div>
+        </div>
+
+        <div class="gold-callout">
+          <strong>How to expand this page later</strong>
+          Every time you add a new screenshot, duplicate one of the case study blocks above and update six things:
+          context, setup, trigger, stop, target, and lesson. That is the fastest way to grow this page into a real premium trade library.
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="lesson-head"><h3>What to notice when reviewing</h3><div class="badge">Study checklist</div></div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong>Context alignment</strong><span>Did the setup match the actual market condition?</span></div>
+              <div class="mini-card"><strong>Trigger quality</strong><span>Was there real confirmation or only anticipation?</span></div>
+              <div class="mini-card"><strong>Risk clarity</strong><span>Was invalidation clean and realistic?</span></div>
+              <div class="mini-card"><strong>Lesson value</strong><span>What can be repeated next time, win or lose?</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Homework</h3><div class="badge">Build your own library</div></div>
+            <div class="callout">
+              Pick your next three best screenshots and add them to this page using the same structure. Do not just describe the trade.
+              Force yourself to explain the context, trigger, stop, target, and lesson in plain language.
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card" style="margin-top:18px;">
+          <div class="lesson-head"><h3>Expanded case study library</h3><div class="badge">New charts</div></div>
+          <p>Use these studies to review both the pattern and the execution quality. Focus on the sequence: context, trigger, invalidation, and realistic target selection.</p>
+          <div class="case-study-grid">
+            <div class="case-study-card">
+              <h3>Breakout after consolidation</h3>
+              <img src="breakout-consolidation.png" alt="Breakout after consolidation" />
+              <p class="chart-caption">A clean compression breaks and expands. Ideal for teaching students how to trade the move from balance into momentum.</p>
+              <div class="tag-row"><div class="pill">Setup • breakout</div><div class="pill">Profile • 1:3 RR</div></div>
+            </div>
+            <div class="case-study-card">
+              <h3>Downtrend breakside continuation</h3>
+              <img src="downtrend-breakout.png" alt="Downtrend breakout" />
+              <p class="chart-caption">The market loses the channel and continues lower. Useful for execution and stop placement review.</p>
+              <div class="tag-row"><div class="pill">Setup • trend continuation</div><div class="pill">Profile • 1:4 RR</div></div>
+            </div>
+            <div class="case-study-card">
+              <h3>Flag pattern continuation</h3>
+              <img src="flag-pattern.png" alt="Flag pattern" />
+              <p class="chart-caption">One of the clearest continuation concepts in the course: impulse, pause, breakout.</p>
+              <div class="tag-row"><div class="pill">Setup • flag</div><div class="pill">Profile • 1:5 RR</div></div>
+            </div>
+            <div class="case-study-card">
+              <h3>Resistance break with two targets</h3>
+              <img src="breakout-two-targets.png" alt="Breakout with two targets" />
+              <p class="chart-caption">A great example for teaching partial profits, first target management, and leaving a runner for the full objective.</p>
+              <div class="tag-row"><div class="pill">Execution • partials</div><div class="pill">Focus • target planning</div></div>
+            </div>
+            <div class="case-study-card">
+              <h3>Simple breakout with target price</h3>
+              <img src="breakout-target-price.png" alt="Simple breakout" />
+              <p class="chart-caption">This is the kind of easy-to-recognize setup that helps beginners build confidence and structure.</p>
+              <div class="tag-row"><div class="pill">Setup • beginner friendly</div><div class="pill">Focus • level break</div></div>
+            </div>
+            <div class="case-study-card">
+              <h3>Strong bitcoin breakout</h3>
+              <img src="btc-strong-breakout.png" alt="Bitcoin breakout" />
+              <p class="chart-caption">Powerful crypto breakouts can work well, but they also punish emotional chasing. Use this study to discuss volatility filters.</p>
+              <div class="tag-row"><div class="pill">Market • crypto</div><div class="pill">Risk • sweep sensitive</div></div>
+            </div>
+            <div class="case-study-card">
+              <h3>False breakout losing trade</h3>
+              <img src="false-breakout-loss.png" alt="False breakout loss" />
+              <p class="chart-caption">A valuable reminder that losing trades belong inside a professional course too. This chart teaches risk control and emotional stability.</p>
+              <div class="tag-row"><div class="pill">Setup • failed breakout</div><div class="pill">Lesson • psychology</div></div>
+            </div>
+          </div>
+        </div>
+<div class="nav-cards">
+          <a href="journal.html">
+            <div class="nav-label">Previous</div>
+            <div class="nav-title">Journal</div>
+            <div class="nav-desc">Track performance, execution quality, emotions, and results in R.</div>
+          </a>
+          <a href="resources.html">
+            <div class="nav-label">Next section</div>
+            <div class="nav-title">Resources</div>
+            <div class="nav-desc">Finish the portal with downloads, checklists, and support material.</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">MotivTrading — full course portal bundle.</div>
+  <script src="progress.js"></script>
+  <script type="module" src="../members-header.js"></script>
+</body>
+</html>

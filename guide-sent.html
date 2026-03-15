@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide Sent • MotivTrading</title>
+  <style>
+    :root{
+      --bg:#040b16;
+      --bg2:#081224;
+      --panel:#0c1830;
+      --panel-2:#101f3d;
+      --line:rgba(255,255,255,.09);
+      --text:#eef3fb;
+      --muted:#9aa8c2;
+      --gold:#d9b867;
+      --gold-2:#f0d18c;
+      --success:#8ce0b6;
+      --shadow:0 30px 80px rgba(0,0,0,.45);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(217,184,103,.14), transparent 28%),
+        radial-gradient(circle at left 20%, rgba(39,91,184,.16), transparent 22%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+      min-height:100vh;
+    }
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:28px 22px 70px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0 22px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:min(340px, 100%);
+      max-width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+      object-position:left center;
+      filter:drop-shadow(0 10px 24px rgba(0,0,0,.25));
+    }
+
+    .top-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      transition:.2s ease;
+    }
+
+    .pill:hover{transform:translateY(-1px); border-color:rgba(217,184,103,.45)}
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
+      align-items:stretch;
+      margin-top:10px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(14,28,55,.96), rgba(8,18,36,.96));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-copy{
+      padding:40px 38px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid rgba(217,184,103,.35);
+      color:var(--gold-2);
+      background:rgba(217,184,103,.08);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height:1.02;
+      letter-spacing:-.04em;
+    }
+
+    .lead{
+      margin:0 0 22px;
+      font-size:18px;
+      line-height:1.7;
+      color:var(--muted);
+      max-width:58ch;
+    }
+
+    .success-line{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      background:linear-gradient(180deg, rgba(140,224,182,.12), rgba(140,224,182,.05));
+      border:1px solid rgba(140,224,182,.25);
+      color:#ddfff0;
+      padding:16px 18px;
+      border-radius:18px;
+      margin:18px 0 20px;
+      font-size:15px;
+      line-height:1.6;
+    }
+
+    .success-icon{
+      width:26px;
+      height:26px;
+      flex:0 0 26px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      color:#02120a;
+      background:var(--success);
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px 18px;
+      margin:22px 0 28px;
+    }
+
+    .check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.55;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .check b{display:block; margin-bottom:2px}
+    .check .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--gold);
+      margin-top:7px;
+      flex:0 0 10px;
+      box-shadow:0 0 0 4px rgba(217,184,103,.12);
+    }
+
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 22px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:800;
+      font-size:15px;
+      transition:.2s ease;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg, var(--gold-2), var(--gold));
+      color:#0a111e;
+      box-shadow:0 16px 34px rgba(217,184,103,.22);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.03);
+      border-color:var(--line);
+      color:var(--text);
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .hero-visual{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .visual-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px 0;
+    }
+
+    .visual-header h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:-.03em;
+    }
+
+    .status{
+      color:var(--gold-2);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .preview-frame{
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:#071120;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+      padding:10px;
+    }
+
+    .preview-frame img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      object-position:center top;
+      border-radius:14px;
+      background:#071120;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:15px 16px;
+    }
+
+    .stat .label{
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:8px;
+    }
+
+    .stat .value{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:-.03em;
+    }
+
+    .section{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:26px;
+    }
+
+    .panel{
+      padding:28px;
+    }
+
+    .panel h3{
+      margin:0 0 12px;
+      font-size:28px;
+      letter-spacing:-.04em;
+    }
+
+    .panel p{
+      margin:0 0 16px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:16px;
+    }
+
+    .mini-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .mini-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+    }
+
+    .mini-item .n{
+      width:28px;height:28px;
+      border-radius:10px;
+      display:grid;place-items:center;
+      background:rgba(217,184,103,.12);
+      color:var(--gold-2);
+      font-weight:800;
+      flex:0 0 28px;
+    }
+
+    .mini-item b{display:block; margin-bottom:2px}
+    .mini-item span{color:var(--muted); font-size:14px; line-height:1.5}
+
+    .footer-note{
+      margin-top:26px;
+      padding:18px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    @media (max-width: 980px){
+      .hero, .section{grid-template-columns:1fr}
+      .topbar{flex-direction:column; align-items:flex-start}
+      .top-actions{justify-content:flex-start}
+      .stats{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 640px){
+      .page{padding:18px 14px 44px}
+      .hero-copy, .panel{padding:24px 20px}
+      .checklist{grid-template-columns:1fr}
+      .brand img{width:min(260px, 100%)}
+      h1{font-size:38px}
+      .lead{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <img src="assets/motivtrading-logo.png" alt="MotivTrading logo">
+      </div>
+      <div class="top-actions">
+        <a class="pill" href="free_guide.html">Back to Free Guide</a>
+        <a class="pill" href="index.html">Main Site</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="card hero-copy">
+        <div class="eyebrow">Guide Delivery Confirmed</div>
+        <h1>Your guide is on the way.</h1>
+        <p class="lead">
+          Your MotivTrading free guide has been sent to your inbox. While you wait, take a look at how the academy is built and what comes next after the free material.
+        </p>
+
+        <div class="success-line">
+          <div class="success-icon">✓</div>
+          <div>
+            Check your inbox for the email from <b>support@motivtrading.com</b>. If you do not see it within a minute, check spam or promotions and move it to your main inbox so you do not miss future trading emails.
+          </div>
+        </div>
+
+        <div class="checklist">
+          <div class="check">
+            <div class="dot"></div>
+            <div><b>Instant access</b> The guide is delivered immediately to the email you entered.</div>
+          </div>
+          <div class="check">
+            <div class="dot"></div>
+            <div><b>Real examples</b> You will see chart-based breakdowns instead of generic theory.</div>
+          </div>
+          <div class="check">
+            <div class="dot"></div>
+            <div><b>Course preview</b> The guide is built from the same concepts used inside MotivTrading.</div>
+          </div>
+          <div class="check">
+            <div><b>Next step</b> Once you finish the guide, move into the public course pages and offer.</div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="start.html">Explore the course</a>
+          <a class="btn btn-secondary" href="trades.html">View trade examples</a>
+        </div>
+      </div>
+
+      <div class="card hero-visual">
+        <div class="visual-header">
+          <div>
+            <div class="status">Members Portal Preview</div>
+            <h2>Your premium course system</h2>
+          </div>
+        </div>
+
+        <div class="preview-frame">
+          <img src="assets/dashboard-preview.png" alt="MotivTrading dashboard preview">
+        </div>
+        <div style="padding: 0 4px; color: var(--muted); font-size: 13px; line-height: 1.5;">
+          If the preview image still does not appear, make sure the dashboard image in your project is named exactly <b>dashboard-preview.png</b> inside the <b>assets</b> folder.
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="label">Core Modules</div>
+            <div class="value">6-step path</div>
+          </div>
+          <div class="stat">
+            <div class="label">Support Pages</div>
+            <div class="value">Tools + journal</div>
+          </div>
+          <div class="stat">
+            <div class="label">Style</div>
+            <div class="value">Execution-focused</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card panel">
+        <h3>What happens next</h3>
+        <p>
+          The free guide is designed to give you a strong first look at breakout structures, liquidity concepts, continuation patterns, and risk-first thinking. It is not just a PDF download. It is your first entry point into the MotivTrading framework.
+        </p>
+        <div class="mini-list">
+          <div class="mini-item">
+            <div class="n">1</div>
+            <div>
+              <b>Read the guide</b>
+              <span>Go through the examples and focus on the logic behind the setups, not only the outcome.</span>
+            </div>
+          </div>
+          <div class="mini-item">
+            <div class="n">2</div>
+            <div>
+              <b>Review the trades page</b>
+              <span>See how the concepts translate into actual chart situations and cleaner execution ideas.</span>
+            </div>
+          </div>
+          <div class="mini-item">
+            <div class="n">3</div>
+            <div>
+              <b>Move into the full system</b>
+              <span>Use the Start page to understand how the academy is structured from foundations to execution.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card panel">
+        <h3>Why this feels different</h3>
+        <p>
+          Most beginners spend too long jumping between random videos, signals, and inconsistent strategies. MotivTrading is built to feel like a structured learning system, not scattered content.
+        </p>
+        <div class="mini-list">
+          <div class="mini-item">
+            <div class="n">A</div>
+            <div>
+              <b>Structured progression</b>
+              <span>Start from foundations, then move into structure, entries, execution, and support tools.</span>
+            </div>
+          </div>
+          <div class="mini-item">
+            <div class="n">B</div>
+            <div>
+              <b>Visual learning</b>
+              <span>Chart screenshots, examples, and practical pages make the training feel more applied and useful.</span>
+            </div>
+          </div>
+          <div class="mini-item">
+            <div class="n">C</div>
+            <div>
+              <b>Execution mindset</b>
+              <span>The goal is not just information. The goal is to build a repeatable trading process you can actually use.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:24px">
+          <a class="btn btn-primary" href="start.html">See how the system works</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      © MotivTrading Academy • Check your inbox, save the guide email, and return to the site when you are ready to go deeper.
+    </div>
+  </div>
+</body>
+</html>

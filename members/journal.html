@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module" src="../js/access-check.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal - MotivTrading</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .content-column{min-width:0;}
+    .content-column .nav-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+    .content-column .nav-cards a{
+      display:block;
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      color:inherit;
+      text-decoration:none;
+    }
+    .content-column .nav-label{
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .content-column .nav-title{
+      font-size:20px;
+      font-weight:800;
+      margin-top:8px;
+    }
+    .content-column .nav-desc{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .journal-card{
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+    }
+    .journal-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+    .journal-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .journal-badge{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .journal-title{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.15;
+      margin-top:6px;
+    }
+    .journal-desc{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+    .input-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .field{
+      display:grid;
+      gap:8px;
+    }
+    .field label{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .field input, .field select, .field textarea{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      padding:12px 14px;
+      outline:none;
+      font:inherit;
+    }
+    .field textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder{
+      color:rgba(255,255,255,.38);
+    }
+    .full-span{grid-column:1 / -1;}
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      border:none;
+      border-radius:14px;
+      padding:12px 16px;
+      font-weight:700;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--gold1),var(--gold2));
+      color:#111;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      border:1px solid var(--border);
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .stat-box{
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      background:rgba(255,255,255,.03);
+    }
+    .stat-label{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .stat-value{
+      font-size:26px;
+      font-weight:800;
+      line-height:1.1;
+    }
+
+    .log-table-wrap{
+      overflow:auto;
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:920px;
+    }
+    th, td{
+      padding:14px 12px;
+      text-align:left;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      vertical-align:top;
+    }
+    th{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--muted);
+      background:rgba(255,255,255,.03);
+      position:sticky;
+      top:0;
+    }
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .result-positive{color:#7fe39a;font-weight:700;}
+    .result-negative{color:#ff8a8a;font-weight:700;}
+    .result-neutral{color:#f1d27a;font-weight:700;}
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .mini-card strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .empty-state{
+      color:var(--muted);
+      padding:18px 2px 2px 2px;
+    }
+    .callout-strong{
+      border:1px solid rgba(214,170,86,.35);
+      background:rgba(214,170,86,.08);
+      border-radius:20px;
+      padding:18px;
+      margin-top:18px;
+    }
+
+    @media (max-width: 1100px){
+      .content-column .nav-cards,
+      .journal-grid,
+      .input-grid,
+      .mini-grid{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .full-span{grid-column:auto;}
+    }
+  </style>
+  <link rel="stylesheet" href="../site-template.css" />
+</head>
+<body data-member-page="journal.html">
+<section class="hero">
+    <div class="container">
+      <div class="eyebrow">Performance tracking</div>
+      <h1>Journal</h1>
+      <div class="lead">
+        A trader improves faster when trades are reviewed honestly. Use this journal to track setups, emotions, execution quality,
+        and performance in R so you can build data instead of relying on memory.
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container sidebar-layout">
+      <aside class="sidebar">
+        <div class="sidebar-title">Course Curriculum</div>
+        <div class="curriculum-label">Member progress</div>
+        <div class="progress-box progress-box-primary">
+          <div class="progress-meta">
+            <div class="progress-caption">Lesson progress</div>
+            <span data-progress-label>0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" data-progress-fill style="width:0%;"></div></div>
+        </div>
+        <a href="dashboard.html"><strong>🏠 Dashboard</strong><span>Overview and roadmap</span></a>
+        <a href="module1_foundations.html" data-module-link="1"><strong>📘 Trading Foundations</strong><span>Build market context</span></a>
+        <a href="module2_market_structure.html" data-module-link="2"><strong>📊 Market Structure</strong><span>Read trend and range</span></a>
+        <a href="module3_entry_systems.html" data-module-link="3"><strong>🎯 Entry Systems</strong><span>Confirmation-based entries</span></a>
+        <a href="module4_execution.html" data-module-link="4"><strong>⚙️ Execution</strong><span>Management and targets</span></a>
+        <a href="module5_risk_management.html" data-module-link="5"><strong>🛡️ Risk Management</strong><span>Protect capital</span></a>
+        <a href="module6_psychology.html" data-module-link="6"><strong>🧠 Psychology</strong><span>Discipline and review</span></a>
+        <a href="playbooks.html" data-support-link="true"><strong>🗂️ Playbooks</strong><span>Repeatable setups</span></a>
+        <a href="tools.html" data-support-link="true"><strong>🧮 Tools</strong><span>Interactive calculators</span></a>
+        <a class="active" href="journal.html" data-support-link="true"><strong>📝 Journal</strong><span>Self-review system</span></a>
+        <a href="case_studies.html" data-support-link="true"><strong>📚 Case Studies</strong><span>Trade examples</span></a>
+        <a href="resources.html" data-support-link="true"><strong>📦 Resources</strong><span>Downloads and next steps</span></a>
+      </aside>
+
+      <div class="content-column">
+        <div class="grid-2">
+          <div class="card">
+            <div class="lesson-head"><h3>Why the journal matters</h3><div class="badge">Professional edge</div></div>
+            <p>
+              Traders often remember emotions more clearly than facts. A journal corrects that. It shows which setups actually work,
+              whether execution matched the plan, and what habits are helping or hurting performance.
+            </p>
+            <div class="pills">
+              <div class="pill">Setup tracking</div>
+              <div class="pill">R-multiples</div>
+              <div class="pill">Emotional review</div>
+              <div class="pill">Consistency</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>How to use this page</h3><div class="badge">Workflow</div></div>
+            <p>
+              Log each trade after it closes. Review the stats at the top, then read the notes column to spot behavior patterns.
+              The goal is not just to record winners and losers. The goal is to understand why they happened.
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <div class="journal-head">
+            <div>
+              <div class="journal-badge">Trade logger</div>
+              <div class="journal-title">Add Journal Entry</div>
+            </div>
+          </div>
+          <div class="journal-desc">
+            Capture the setup, execution quality, emotional state, and outcome in one place.
+          </div>
+
+          <div class="input-grid">
+            <div class="field">
+              <label for="tradeDate">Date</label>
+              <input type="date" id="tradeDate" />
+            </div>
+            <div class="field">
+              <label for="tradeMarket">Market / Pair</label>
+              <input type="text" id="tradeMarket" placeholder="EURUSD / NQ / BTCUSD" />
+            </div>
+            <div class="field">
+              <label for="tradeSetup">Setup</label>
+              <select id="tradeSetup">
+                <option>Opening Range Breakout</option>
+                <option>Trend Pullback Entry</option>
+                <option>Liquidity Sweep Reversal</option>
+                <option>Failed Breakout</option>
+                <option>Range Expansion Break</option>
+                <option>Session Momentum Shift</option>
+                <option>Custom Setup</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tradeBias">Bias</label>
+              <select id="tradeBias">
+                <option>Long</option>
+                <option>Short</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tradeEntry">Entry Price</label>
+              <input type="number" id="tradeEntry" placeholder="100.00" step="0.01" />
+            </div>
+            <div class="field">
+              <label for="tradeStop">Stop Price</label>
+              <input type="number" id="tradeStop" placeholder="98.00" step="0.01" />
+            </div>
+            <div class="field">
+              <label for="tradeTarget">Target Price</label>
+              <input type="number" id="tradeTarget" placeholder="106.00" step="0.01" />
+            </div>
+            <div class="field">
+              <label for="tradeResultR">Result (R)</label>
+              <input type="number" id="tradeResultR" placeholder="1.5" step="0.1" />
+            </div>
+            <div class="field">
+              <label for="tradeExecution">Execution Quality</label>
+              <select id="tradeExecution">
+                <option>A - Followed plan perfectly</option>
+                <option>B - Mostly followed plan</option>
+                <option>C - Emotional errors present</option>
+                <option>D - Poor execution</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tradeEmotion">Emotion</label>
+              <select id="tradeEmotion">
+                <option>Calm</option>
+                <option>Focused</option>
+                <option>Hesitant</option>
+                <option>Frustrated</option>
+                <option>Greedy</option>
+                <option>Fearful</option>
+                <option>Overconfident</option>
+              </select>
+            </div>
+            <div class="field full-span">
+              <label for="tradeScreenshot">Screenshot / Chart Link</label>
+              <input type="text" id="tradeScreenshot" placeholder="trade3.png or paste a chart link" />
+            </div>
+            <div class="field full-span">
+              <label for="tradeNotes">Notes</label>
+              <textarea id="tradeNotes" placeholder="What was the context, what confirmed the trade, what went well, what needs improvement?"></textarea>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn" id="addTradeBtn">Add Entry</button>
+            <button class="btn btn-secondary" id="clearTradesBtn">Clear Journal</button>
+          </div>
+        </div>
+
+        <div class="journal-card" style="margin-top:18px;">
+          <div class="journal-head">
+            <div>
+              <div class="journal-badge">Performance summary</div>
+              <div class="journal-title">Journal Stats</div>
+            </div>
+          </div>
+          <div class="journal-desc">
+            Track performance in R so the numbers stay comparable across different markets and sizes.
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-label">Total trades</div>
+              <div class="stat-value" id="statTrades">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Win rate</div>
+              <div class="stat-value" id="statWinRate">0%</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Net R</div>
+              <div class="stat-value" id="statNetR">0.0R</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Avg R / Trade</div>
+              <div class="stat-value" id="statAvgR">0.0R</div>
+            </div>
+          </div>
+
+          <div class="callout-strong">
+            <strong>Best practice:</strong>
+            Review the journal at the end of every week and ask two questions: which setups produce the cleanest execution, and which emotional states lead to the worst decisions?
+          </div>
+        </div>
+
+        <div class="journal-card" style="margin-top:18px;">
+          <div class="journal-head">
+            <div>
+              <div class="journal-badge">Trade log</div>
+              <div class="journal-title">Recent Entries</div>
+            </div>
+          </div>
+          <div class="journal-desc">
+            This is where your process becomes visible. Use the notes column honestly.
+          </div>
+
+          <div class="log-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Market</th>
+                  <th>Setup</th>
+                  <th>Bias</th>
+                  <th>Entry / Stop / Target</th>
+                  <th>Result</th>
+                  <th>Execution</th>
+                  <th>Emotion</th>
+                  <th>Screenshot</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="journalTableBody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="emptyState">
+            No journal entries yet. Add your first trade above to start building real performance data.
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="lesson-head"><h3>What to review weekly</h3><div class="badge">Use this checklist</div></div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong>Setup quality</strong><span>Which playbooks are performing best in real market conditions?</span></div>
+              <div class="mini-card"><strong>Execution quality</strong><span>Are winners and losers both following the same process?</span></div>
+              <div class="mini-card"><strong>Emotional patterns</strong><span>Which emotional states appear before poor decisions?</span></div>
+              <div class="mini-card"><strong>Risk discipline</strong><span>Did sizing and daily limits stay consistent all week?</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Homework</h3><div class="badge">Build your review habit</div></div>
+            <div class="callout">
+              Log your next ten trades using this page. At the end of trade ten, review the journal and identify: your best setup, your worst habit,
+              and one specific rule you will tighten next week.
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-cards">
+          <a href="tools.html">
+            <div class="nav-label">Previous</div>
+            <div class="nav-title">Tools</div>
+            <div class="nav-desc">Use calculators to standardize size, daily loss limits, and reward-to-risk.</div>
+          </a>
+          <a href="case_studies.html">
+            <div class="nav-label">Next section</div>
+            <div class="nav-title">Case Studies</div>
+            <div class="nav-desc">See full trade breakdowns and examples of the course concepts in action.</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">MotivTrading — full course portal bundle.</div>
+
+  <script>
+    const journalEntries = [];
+
+    function setTodayDefault(){
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('tradeDate').value = today;
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderStats(){
+      const total = journalEntries.length;
+      const wins = journalEntries.filter(e => e.resultR > 0).length;
+      const netR = journalEntries.reduce((sum, e) => sum + e.resultR, 0);
+      const avgR = total ? netR / total : 0;
+      const winRate = total ? (wins / total) * 100 : 0;
+
+      document.getElementById('statTrades').textContent = total;
+      document.getElementById('statWinRate').textContent = winRate.toFixed(0) + '%';
+      document.getElementById('statNetR').textContent = netR.toFixed(1) + 'R';
+      document.getElementById('statAvgR').textContent = avgR.toFixed(1) + 'R';
+    }
+
+    function renderTable(){
+      const tbody = document.getElementById('journalTableBody');
+      const emptyState = document.getElementById('emptyState');
+
+      if (!journalEntries.length){
+        tbody.innerHTML = '';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      tbody.innerHTML = journalEntries.map(entry => {
+        let resultClass = 'result-neutral';
+        if (entry.resultR > 0) resultClass = 'result-positive';
+        if (entry.resultR < 0) resultClass = 'result-negative';
+
+        const screenshotHtml = entry.screenshot
+          ? '<span class="tag">' + escapeHtml(entry.screenshot) + '</span>'
+          : '<span class="tag">No screenshot</span>';
+
+        return `
+          <tr>
+            <td>${escapeHtml(entry.date)}</td>
+            <td>${escapeHtml(entry.market)}</td>
+            <td><span class="tag">${escapeHtml(entry.setup)}</span></td>
+            <td><span class="tag">${escapeHtml(entry.bias)}</span></td>
+            <td>${escapeHtml(entry.entry)} / ${escapeHtml(entry.stop)} / ${escapeHtml(entry.target)}</td>
+            <td class="${resultClass}">${escapeHtml(entry.resultR.toFixed(1))}R</td>
+            <td>${escapeHtml(entry.execution)}</td>
+            <td>${escapeHtml(entry.emotion)}</td>
+            <td>${screenshotHtml}</td>
+            <td>${escapeHtml(entry.notes)}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function clearForm(){
+      document.getElementById('tradeMarket').value = '';
+      document.getElementById('tradeSetup').selectedIndex = 0;
+      document.getElementById('tradeBias').selectedIndex = 0;
+      document.getElementById('tradeEntry').value = '';
+      document.getElementById('tradeStop').value = '';
+      document.getElementById('tradeTarget').value = '';
+      document.getElementById('tradeResultR').value = '';
+      document.getElementById('tradeExecution').selectedIndex = 0;
+      document.getElementById('tradeEmotion').selectedIndex = 0;
+      document.getElementById('tradeScreenshot').value = '';
+      document.getElementById('tradeNotes').value = '';
+      setTodayDefault();
+    }
+
+    document.getElementById('addTradeBtn').addEventListener('click', function(){
+      const entry = {
+        date: document.getElementById('tradeDate').value || '',
+        market: document.getElementById('tradeMarket').value.trim(),
+        setup: document.getElementById('tradeSetup').value,
+        bias: document.getElementById('tradeBias').value,
+        entry: document.getElementById('tradeEntry').value || '-',
+        stop: document.getElementById('tradeStop').value || '-',
+        target: document.getElementById('tradeTarget').value || '-',
+        resultR: parseFloat(document.getElementById('tradeResultR').value) || 0,
+        execution: document.getElementById('tradeExecution').value,
+        emotion: document.getElementById('tradeEmotion').value,
+        screenshot: document.getElementById('tradeScreenshot').value.trim(),
+        notes: document.getElementById('tradeNotes').value.trim()
+      };
+
+      if (!entry.date || !entry.market){
+        alert('Please add at least the date and market before saving the trade.');
+        return;
+      }
+
+      journalEntries.unshift(entry);
+      renderStats();
+      renderTable();
+      clearForm();
+    });
+
+    document.getElementById('clearTradesBtn').addEventListener('click', function(){
+      const confirmed = window.confirm('Clear all journal entries on this page?');
+      if (!confirmed) return;
+      journalEntries.length = 0;
+      renderStats();
+      renderTable();
+      clearForm();
+    });
+
+    setTodayDefault();
+    renderStats();
+    renderTable();
+  </script>
+  <script src="progress.js"></script>
+  <script type="module" src="../members-header.js"></script>
+</body>
+</html>

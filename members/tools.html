@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module" src="../js/access-check.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools - MotivTrading</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .content-column{min-width:0;}
+    .content-column .nav-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:18px;
+    }
+    .content-column .nav-cards a{
+      display:block;
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      color:inherit;
+      text-decoration:none;
+    }
+    .content-column .nav-label{
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .content-column .nav-title{
+      font-size:20px;
+      font-weight:800;
+      margin-top:8px;
+    }
+    .content-column .nav-desc{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    .tool-card{
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:22px;
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+    }
+    .tool-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+    .tool-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .tool-badge{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+    .tool-title{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.15;
+      margin-top:6px;
+    }
+    .tool-desc{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+    .input-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .field{
+      display:grid;
+      gap:8px;
+    }
+    .field label{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .field input, .field select{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      padding:12px 14px;
+      outline:none;
+    }
+    .field input::placeholder{
+      color:rgba(255,255,255,.38);
+    }
+    .result-box{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      padding:16px;
+      margin-top:14px;
+    }
+    .result-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    .result-item{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.025);
+    }
+    .result-label{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .result-value{
+      font-size:24px;
+      font-weight:800;
+      line-height:1.1;
+    }
+    .muted-note{
+      color:var(--muted);
+      margin-top:10px;
+      font-size:14px;
+    }
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .mini-card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .mini-card strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .full-span{
+      grid-column:1 / -1;
+    }
+    @media (max-width: 1100px){
+      .content-column .nav-cards,
+      .tool-grid,
+      .input-grid,
+      .result-grid,
+      .mini-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <link rel="stylesheet" href="../site-template.css" />
+</head>
+<body data-member-page="tools.html">
+<section class="hero">
+    <div class="container">
+      <div class="eyebrow">Trading utilities</div>
+      <h1>Tools</h1>
+      <div class="lead">
+        Professional traders rely on repeatable numbers, not guesswork. Use these tools to calculate position size, set daily loss limits,
+        and measure reward-to-risk before you place a trade.
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container sidebar-layout">
+      <aside class="sidebar">
+        <div class="sidebar-title">Course Curriculum</div>
+        <div class="curriculum-label">Member progress</div>
+        <div class="progress-box progress-box-primary">
+          <div class="progress-meta">
+            <div class="progress-caption">Lesson progress</div>
+            <span data-progress-label>0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" data-progress-fill style="width:0%;"></div></div>
+        </div>
+        <a href="dashboard.html"><strong>🏠 Dashboard</strong><span>Overview and roadmap</span></a>
+        <a href="module1_foundations.html" data-module-link="1"><strong>📘 Trading Foundations</strong><span>Build market context</span></a>
+        <a href="module2_market_structure.html" data-module-link="2"><strong>📊 Market Structure</strong><span>Read trend and range</span></a>
+        <a href="module3_entry_systems.html" data-module-link="3"><strong>🎯 Entry Systems</strong><span>Confirmation-based entries</span></a>
+        <a href="module4_execution.html" data-module-link="4"><strong>⚙️ Execution</strong><span>Management and targets</span></a>
+        <a href="module5_risk_management.html" data-module-link="5"><strong>🛡️ Risk Management</strong><span>Protect capital</span></a>
+        <a href="module6_psychology.html" data-module-link="6"><strong>🧠 Psychology</strong><span>Discipline and review</span></a>
+        <a href="playbooks.html" data-support-link="true"><strong>🗂️ Playbooks</strong><span>Repeatable setups</span></a>
+        <a class="active" href="tools.html" data-support-link="true"><strong>🧮 Tools</strong><span>Interactive calculators</span></a>
+        <a href="journal.html" data-support-link="true"><strong>📝 Journal</strong><span>Self-review system</span></a>
+        <a href="case_studies.html" data-support-link="true"><strong>📚 Case Studies</strong><span>Trade examples</span></a>
+        <a href="resources.html" data-support-link="true"><strong>📦 Resources</strong><span>Downloads and next steps</span></a>
+      </aside>
+
+      <div class="content-column">
+        <div class="grid-2">
+          <div class="card">
+            <div class="lesson-head"><h3>Why these tools matter</h3><div class="badge">Professional edge</div></div>
+            <p>
+              Most traders do not fail because they cannot read a chart. They fail because they size too large, ignore daily limits,
+              or enter trades with weak reward-to-risk. These tools remove that guesswork and bring structure to every decision.
+            </p>
+            <div class="pills">
+              <div class="pill">Position size</div>
+              <div class="pill">Daily limits</div>
+              <div class="pill">R-multiples</div>
+              <div class="pill">Discipline</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>How to use this page</h3><div class="badge">Workflow</div></div>
+            <p>
+              Start with the Risk Calculator before entering a trade. Use the Daily Loss Limit Calculator before your session begins.
+              Then check the Reward-to-Risk tool to confirm the trade is actually worth taking.
+            </p>
+          </div>
+        </div>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <div class="tool-head">
+              <div>
+                <div class="tool-badge">Calculator 1</div>
+                <div class="tool-title">Risk Calculator</div>
+              </div>
+            </div>
+            <div class="tool-desc">
+              Calculate dollar risk and position size from your account size, risk percentage, and stop distance.
+            </div>
+
+            <div class="input-grid">
+              <div class="field">
+                <label for="accountSize">Account size ($)</label>
+                <input type="number" id="accountSize" placeholder="10000" value="10000" />
+              </div>
+              <div class="field">
+                <label for="riskPercent">Risk per trade (%)</label>
+                <input type="number" id="riskPercent" placeholder="1" value="1" step="0.1" />
+              </div>
+              <div class="field">
+                <label for="stopDistance">Stop distance (points / pips)</label>
+                <input type="number" id="stopDistance" placeholder="50" value="50" step="0.1" />
+              </div>
+              <div class="field">
+                <label for="valuePerPoint">Value per point per 1 unit ($)</label>
+                <input type="number" id="valuePerPoint" placeholder="1" value="1" step="0.01" />
+              </div>
+            </div>
+
+            <div class="result-box">
+              <div class="result-grid">
+                <div class="result-item">
+                  <div class="result-label">Dollar risk</div>
+                  <div class="result-value" id="dollarRisk">$100.00</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Position size</div>
+                  <div class="result-value" id="positionSize">2.00</div>
+                </div>
+              </div>
+              <div class="muted-note" id="riskCalcNote">
+                Based on the current inputs, you can risk $100.00 and take a position size of 2.00 units.
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-head">
+              <div>
+                <div class="tool-badge">Calculator 2</div>
+                <div class="tool-title">Daily Loss Limit</div>
+              </div>
+            </div>
+            <div class="tool-desc">
+              Set the maximum amount you are allowed to lose in one day so you can stop before emotional trading begins.
+            </div>
+
+            <div class="input-grid">
+              <div class="field">
+                <label for="dailyAccountSize">Account size ($)</label>
+                <input type="number" id="dailyAccountSize" placeholder="10000" value="10000" />
+              </div>
+              <div class="field">
+                <label for="dailyRiskPercent">Max daily risk (%)</label>
+                <input type="number" id="dailyRiskPercent" placeholder="3" value="3" step="0.1" />
+              </div>
+              <div class="field full-span">
+                <label for="lossesAllowed">Losses allowed before stop</label>
+                <select id="lossesAllowed">
+                  <option value="1">1 full loss</option>
+                  <option value="2" selected>2 full losses</option>
+                  <option value="3">3 full losses</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="result-box">
+              <div class="result-grid">
+                <div class="result-item">
+                  <div class="result-label">Max loss today</div>
+                  <div class="result-value" id="dailyLossAmount">$300.00</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Approx. loss per trade</div>
+                  <div class="result-value" id="lossPerTrade">$150.00</div>
+                </div>
+              </div>
+              <div class="muted-note" id="dailyLossNote">
+                If you reach this limit, your trading day should be over.
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card full-span">
+            <div class="tool-head">
+              <div>
+                <div class="tool-badge">Calculator 3</div>
+                <div class="tool-title">Reward-to-Risk Calculator</div>
+              </div>
+            </div>
+            <div class="tool-desc">
+              Check whether a trade has enough room to justify the risk. This keeps you from taking low-quality entries with poor upside.
+            </div>
+
+            <div class="input-grid">
+              <div class="field">
+                <label for="entryPrice">Entry price</label>
+                <input type="number" id="entryPrice" placeholder="100" value="100" step="0.01" />
+              </div>
+              <div class="field">
+                <label for="stopPrice">Stop price</label>
+                <input type="number" id="stopPrice" placeholder="98" value="98" step="0.01" />
+              </div>
+              <div class="field">
+                <label for="targetPrice">Target price</label>
+                <input type="number" id="targetPrice" placeholder="106" value="106" step="0.01" />
+              </div>
+              <div class="field">
+                <label for="rrPositionSize">Position size (units)</label>
+                <input type="number" id="rrPositionSize" placeholder="50" value="50" step="0.01" />
+              </div>
+            </div>
+
+            <div class="result-box">
+              <div class="result-grid">
+                <div class="result-item">
+                  <div class="result-label">Risk per unit</div>
+                  <div class="result-value" id="riskPerUnit">2.00</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Reward per unit</div>
+                  <div class="result-value" id="rewardPerUnit">6.00</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Reward / Risk</div>
+                  <div class="result-value" id="rrRatio">3.00R</div>
+                </div>
+                <div class="result-item">
+                  <div class="result-label">Profit potential</div>
+                  <div class="result-value" id="profitPotential">$300.00</div>
+                </div>
+              </div>
+              <div class="muted-note" id="rrNote">
+                This trade offers 3.00R, which is strong enough to justify the risk if the setup quality is there.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:18px;">
+          <div class="card">
+            <div class="lesson-head"><h3>Best practices</h3><div class="badge">Use these rules</div></div>
+            <div class="mini-grid">
+              <div class="mini-card"><strong>Risk first</strong><span>Calculate size from invalidation, never from confidence.</span></div>
+              <div class="mini-card"><strong>Daily cutoff</strong><span>Stop after your daily loss limit, even if you feel another trade is coming.</span></div>
+              <div class="mini-card"><strong>Think in R</strong><span>Judge trades in multiples of risk, not just dollars.</span></div>
+              <div class="mini-card"><strong>Consistency wins</strong><span>Same risk model, same process, same review language.</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="lesson-head"><h3>Homework</h3><div class="badge">Build your rules</div></div>
+            <div class="callout">
+              Use these tools to define your standard risk model. Write down your account risk per trade, daily loss cap, and minimum acceptable
+              reward-to-risk. Then use those numbers for your next ten trades without changing them mid-session.
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-cards">
+          <a href="playbooks.html">
+            <div class="nav-label">Previous</div>
+            <div class="nav-title">Playbooks</div>
+            <div class="nav-desc">Return to the strategy library and match setups to live market conditions.</div>
+          </a>
+          <a href="journal.html">
+            <div class="nav-label">Next section</div>
+            <div class="nav-title">Journal</div>
+            <div class="nav-desc">Track trades, review execution, and build real performance data.</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">MotivTrading — full course portal bundle.</div>
+
+  <script>
+    function money(value){
+      if (!isFinite(value)) return '$0.00';
+      return '$' + value.toFixed(2);
+    }
+
+    function updateRiskCalculator(){
+      const accountSize = parseFloat(document.getElementById('accountSize').value) || 0;
+      const riskPercent = parseFloat(document.getElementById('riskPercent').value) || 0;
+      const stopDistance = parseFloat(document.getElementById('stopDistance').value) || 0;
+      const valuePerPoint = parseFloat(document.getElementById('valuePerPoint').value) || 0;
+
+      const dollarRisk = accountSize * (riskPercent / 100);
+      const riskPerUnit = stopDistance * valuePerPoint;
+      const positionSize = riskPerUnit > 0 ? dollarRisk / riskPerUnit : 0;
+
+      document.getElementById('dollarRisk').textContent = money(dollarRisk);
+      document.getElementById('positionSize').textContent = positionSize.toFixed(2);
+      document.getElementById('riskCalcNote').textContent =
+        'Based on the current inputs, you can risk ' + money(dollarRisk) +
+        ' and take a position size of ' + positionSize.toFixed(2) + ' units.';
+    }
+
+    function updateDailyLossCalculator(){
+      const accountSize = parseFloat(document.getElementById('dailyAccountSize').value) || 0;
+      const dailyRiskPercent = parseFloat(document.getElementById('dailyRiskPercent').value) || 0;
+      const lossesAllowed = parseFloat(document.getElementById('lossesAllowed').value) || 1;
+
+      const dailyLossAmount = accountSize * (dailyRiskPercent / 100);
+      const lossPerTrade = lossesAllowed > 0 ? dailyLossAmount / lossesAllowed : 0;
+
+      document.getElementById('dailyLossAmount').textContent = money(dailyLossAmount);
+      document.getElementById('lossPerTrade').textContent = money(lossPerTrade);
+      document.getElementById('dailyLossNote').textContent =
+        'With this model, each full loss can be about ' + money(lossPerTrade) +
+        '. If you reach ' + money(dailyLossAmount) + ', your trading day should be over.';
+    }
+
+    function updateRRCalculator(){
+      const entry = parseFloat(document.getElementById('entryPrice').value) || 0;
+      const stop = parseFloat(document.getElementById('stopPrice').value) || 0;
+      const target = parseFloat(document.getElementById('targetPrice').value) || 0;
+      const size = parseFloat(document.getElementById('rrPositionSize').value) || 0;
+
+      const riskPerUnit = Math.abs(entry - stop);
+      const rewardPerUnit = Math.abs(target - entry);
+      const rr = riskPerUnit > 0 ? rewardPerUnit / riskPerUnit : 0;
+      const profitPotential = rewardPerUnit * size;
+
+      document.getElementById('riskPerUnit').textContent = riskPerUnit.toFixed(2);
+      document.getElementById('rewardPerUnit').textContent = rewardPerUnit.toFixed(2);
+      document.getElementById('rrRatio').textContent = rr.toFixed(2) + 'R';
+      document.getElementById('profitPotential').textContent = money(profitPotential);
+
+      let quality = 'This trade offers ' + rr.toFixed(2) + 'R.';
+      if (rr >= 2) {
+        quality += ' That is strong enough to justify the risk if the setup quality is there.';
+      } else if (rr >= 1.5) {
+        quality += ' That can still work, but execution quality needs to be high.';
+      } else {
+        quality += ' That is relatively weak and may not justify the trade.';
+      }
+      document.getElementById('rrNote').textContent = quality;
+    }
+
+    ['accountSize','riskPercent','stopDistance','valuePerPoint'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateRiskCalculator);
+    });
+
+    ['dailyAccountSize','dailyRiskPercent','lossesAllowed'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateDailyLossCalculator);
+      document.getElementById(id).addEventListener('change', updateDailyLossCalculator);
+    });
+
+    ['entryPrice','stopPrice','targetPrice','rrPositionSize'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateRRCalculator);
+    });
+
+    updateRiskCalculator();
+    updateDailyLossCalculator();
+    updateRRCalculator();
+  </script>
+  <script src="progress.js"></script>
+  <script type="module" src="../members-header.js"></script>
+</body>
+</html>
