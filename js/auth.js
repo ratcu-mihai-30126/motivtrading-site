@@ -6,11 +6,29 @@ const signInBtn = document.getElementById("signInBtn");
 const signUpBtn = document.getElementById("signUpBtn");
 const forgotPasswordBtn = document.getElementById("forgotPasswordBtn");
 const messageBox = document.getElementById("message");
+const WELCOME_EMAIL_FUNCTION_URL = "https://duinpadqwekrpdcyjvpb.supabase.co/functions/v1/send-welcome-email";
 
 function showMessage(text, type = "info") {
   if (!messageBox) return;
   messageBox.textContent = text;
   messageBox.className = `message ${type}`;
+}
+
+
+async function sendWelcomeEmail(email) {
+  if (!WELCOME_EMAIL_FUNCTION_URL || !email) return;
+
+  try {
+    await fetch(WELCOME_EMAIL_FUNCTION_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email })
+    });
+  } catch (error) {
+    console.error("Welcome email error:", error);
+  }
 }
 
 function validateInputs() {
@@ -104,6 +122,7 @@ signUpBtn?.addEventListener("click", async () => {
   }
 
   await ensureProfileRow();
+  await sendWelcomeEmail(values.email);
 
   showMessage(
     "Account created. If email confirmation is enabled, check your inbox before signing in.",

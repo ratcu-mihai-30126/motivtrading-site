@@ -1,0 +1,40 @@
+MOTIVTRADING CONTACT + WELCOME EMAIL SETUP
+
+This package now includes:
+1. motivtrading_contact.html connected to Supabase function:
+   https://duinpadqwekrpdcyjvpb.supabase.co/functions/v1/send-contact-message
+2. js/auth.js updated to call:
+   https://duinpadqwekrpdcyjvpb.supabase.co/functions/v1/send-welcome-email
+3. Supabase Edge Function source files in:
+   supabase/functions/send-contact-message/index.ts
+   supabase/functions/send-welcome-email/index.ts
+
+WHAT YOU MUST DO NOW
+
+A) In Supabase CLI, deploy both functions:
+   supabase functions deploy send-contact-message --no-verify-jwt
+   supabase functions deploy send-welcome-email --no-verify-jwt
+
+B) Add these secrets in Supabase:
+   supabase secrets set RESEND_API_KEY=YOUR_RESEND_API_KEY
+   supabase secrets set CONTACT_TO_EMAIL=support@motivtrading.com
+   supabase secrets set CONTACT_FROM_EMAIL="MotivTrading <support@motivtrading.com>"
+   supabase secrets set WELCOME_FROM_EMAIL="MotivTrading <support@motivtrading.com>"
+
+C) In Resend, make sure your domain / sender is verified.
+   If support@motivtrading.com is not verified yet, temporarily use onboarding@resend.dev as sender.
+
+D) In Supabase dashboard:
+   Edge Functions -> send-contact-message -> Settings -> Verify JWT = OFF
+   Edge Functions -> send-welcome-email -> Settings -> Verify JWT = OFF
+   Or deploy with --no-verify-jwt as shown above.
+
+E) Redeploy your site to Vercel after replacing the files.
+
+HOW IT WORKS
+- Contact page sends user messages to support@motivtrading.com
+- Signup triggers a MotivTrading welcome email automatically after account creation
+
+IMPORTANT
+- The welcome email does not block signup. If email sending fails, signup still works.
+- If you want a more premium welcome email design later, we can upgrade the template.

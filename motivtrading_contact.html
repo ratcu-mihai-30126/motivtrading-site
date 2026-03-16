@@ -122,6 +122,9 @@
     }
     textarea{min-height:140px; resize:vertical}
     .fine{color:var(--muted-2); font-size:13px}
+    .status-box{display:none; padding:14px 16px; border-radius:16px; border:1px solid transparent; font-size:14px}
+    .status-box.success{display:block; background:rgba(34,193,122,.12); border-color:rgba(34,193,122,.32); color:#b6f3d5}
+    .status-box.error{display:block; background:rgba(225,100,100,.10); border-color:rgba(225,100,100,.28); color:#ffd1d1}
     .footer{padding:26px 0 50px; text-align:center; color:var(--muted-2); font-size:13px}
     .proof-card{overflow:hidden; border-radius:28px; border:1px solid var(--border); background:#0d172a; box-shadow:var(--shadow)}
     .proof-card img{width:100%; height:280px; object-fit:cover; border-bottom:1px solid var(--border); background:#0b1527}
@@ -164,14 +167,20 @@
   <div class="container two-col">
     <div class="card">
       <div class="section-head"><small>Contact form block</small><h2 style="font-size:38px">Ready now, connect your real form later.</h2></div>
-      <div class="form-grid">
-        <input type="text" placeholder="Your name">
-        <input type="email" placeholder="Your email">
-        <select><option>Question type</option><option>Course support</option><option>Business inquiry</option><option>General question</option></select>
-        <textarea placeholder="Your message"></textarea>
-        <button class="btn btn-primary" type="button">Send message</button>
-      </div>
-      <div class="fine">This is a premium front-end block you can connect to a real form service later.</div>
+      <form id="contactForm" class="form-grid">
+        <input id="contact-name" type="text" placeholder="Your name" autocomplete="name" required>
+        <input id="contact-email" type="email" placeholder="Your email" autocomplete="email" required>
+        <select id="contact-type" required>
+          <option value="">Question type</option>
+          <option>Course support</option>
+          <option>Business inquiry</option>
+          <option>General question</option>
+        </select>
+        <textarea id="contact-message" placeholder="Your message" required></textarea>
+        <button id="contact-submit" class="btn btn-primary" type="submit">Send message</button>
+        <div id="contact-status" class="status-box" aria-live="polite"></div>
+      </form>
+      <div class="fine">Messages go to the MotivTrading support inbox and are sent through your Supabase + Resend setup.</div>
     </div>
     <div class="card">
       <div class="section-head"><small>What to include</small><h2 style="font-size:38px">Keep the communication short and professional.</h2></div>
@@ -188,5 +197,65 @@
   <div class="container">MotivTrading — premium trading education, structure, and process.</div>
 </footer>
 
-  <script type="module" src="public-header.js"></script>
+  
+<script>
+  const CONTACT_FUNCTION_URL = "https://duinpadqwekrpdcyjvpb.supabase.co/functions/v1/send-contact-message";
+
+  const contactForm = document.getElementById("contactForm");
+  const contactStatus = document.getElementById("contact-status");
+  const contactSubmit = document.getElementById("contact-submit");
+
+  function setContactStatus(type, message) {
+    contactStatus.className = `status-box ${type}`;
+    contactStatus.textContent = message;
+  }
+
+  contactForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("contact-name").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
+    const type = document.getElementById("contact-type").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
+
+    if (!name || !email || !type || !message) {
+      setContactStatus("error", "Please complete all fields before sending your message.");
+      return;
+    }
+
+    contactSubmit.disabled = true;
+    contactSubmit.textContent = "Sending...";
+    setContactStatus("success", "Sending your message...");
+
+    try {
+      const response = await fetch(CONTACT_FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, type, message })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const errorMessage = data?.error
+          ? (typeof data.error === "string" ? data.error : JSON.stringify(data.error))
+          : "There was a problem sending your message.";
+        throw new Error(errorMessage);
+      }
+
+      contactForm.reset();
+      setContactStatus("success", "Message sent successfully. We will get back to you at support@motivtrading.com.");
+    } catch (error) {
+      console.error(error);
+      setContactStatus("error", error.message || "There was a problem sending your message. Please try again.");
+    } finally {
+      contactSubmit.disabled = false;
+      contactSubmit.textContent = "Send message";
+    }
+  });
+</script>
+
+<script type="module" src="public-header.js"></script>
 </body></html>
