@@ -1,3 +1,6 @@
-1. Use assets/free-guide/MotivTrading_Free_Guide.pdf as the new guide attachment or download file.
-2. Use FREE-GUIDE-EMAIL-TEMPLATE.html inside your Supabase/Resend function email body.
-3. Replace {{GUIDE_URL}} with the real public URL to the PDF if you want a download button in the email.
+Replace the current free-guide email in your Supabase function with FREE-GUIDE-EMAIL-TEMPLATE.html.
+
+Set {{GUIDE_URL}} to your live lesson page URL, for example:
+https://motivtrading.com/motivtrading_free_guide.html
+
+This version sends visitors to the locked free lesson preview instead of attaching the PDF.
