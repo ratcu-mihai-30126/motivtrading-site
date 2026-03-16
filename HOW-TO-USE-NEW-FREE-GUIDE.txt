@@ -1,0 +1,3 @@
+1. Use assets/free-guide/MotivTrading_Free_Guide.pdf as the new guide attachment or download file.
+2. Use FREE-GUIDE-EMAIL-TEMPLATE.html inside your Supabase/Resend function email body.
+3. Replace {{GUIDE_URL}} with the real public URL to the PDF if you want a download button in the email.
