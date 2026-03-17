@@ -146,8 +146,8 @@
   <div class="container hero-grid">
     <div>
       <div class="eyebrow">Free guide</div>
-      <h1>Access a locked MotivTrading lesson preview and see how the academy teaches.</h1>
-      <p class="lead">A premium preview lesson built from the same concepts used inside MotivTrading Academy: breakout setups, flag patterns, liquidity ideas, risk management, and a controlled look inside the members area.</p>
+      <h1>Get the free MotivTrading guide and start learning with real chart examples.</h1>
+      <p class="lead">A premium beginner guide built from the same concepts used inside MotivTrading Academy: breakout setups, flag patterns, liquidity ideas, risk management, and a preview of the members area.</p>
       <div class="pill-list">
         <div class="pill">Real chart examples</div>
         <div class="pill">Risk-first principles</div>
@@ -164,21 +164,20 @@
     <div class="hero-card"><div class="hero-card-inner">
       <div class="section-head">
         <small>Free guide access</small>
-        <h2 style="font-size:34px;margin-top:10px">Get instant access by email</h2>
-        <p>Visitors receive a premium access email that takes them straight back to this locked lesson preview instead of sending a basic PDF.</p>
+        <h2 style="font-size:34px;margin-top:10px">Send the guide to your email</h2>
+        <p>Enter your details below and get access to a free MotivTrading lesson preview straight to your inbox.</p>
       </div>
 
       <form id="freeGuideForm" class="form-grid">
         <input id="guide-name" type="text" placeholder="Your first name" autocomplete="given-name">
         <input id="guide-email" type="email" placeholder="Your email address" autocomplete="email" required>
-        <button id="guide-submit" class="btn btn-primary" type="submit">Unlock the free lesson</button>
+        <button id="guide-submit" class="btn btn-primary" type="submit">Send me the guide</button>
         <div id="guide-status" class="status-box" aria-live="polite"></div>
-        <div class="fine">Instant access. Premium lesson preview. Sent to your email.</div>
+        <div class="fine">Instant access. Free PDF. Delivered to your email.</div>
       </form>
 
       <div class="config-note">
-        <strong style="color:var(--gold-2)">Setup note:</strong>
-        after you create your Supabase function, paste the function URL inside the <code>FREE_GUIDE_FUNCTION_URL</code> constant near the bottom of this file.
+        Get instant access to a free lesson preview and see how MotivTrading breaks down structure, execution, and discipline.
       </div>
     </div></div>
   </div>
@@ -188,8 +187,8 @@
   <div class="container">
     <div class="section-head">
       <small>Preview</small>
-      <h2>Show visitors exactly what they get before they submit.</h2>
-      <p>This section makes the page convert better because the visitor sees the brand, the members dashboard, and the type of chart examples included in the free guide.</p>
+      <h2>What you get in the free preview</h2>
+      <p>Take a quick look at the academy environment, the lesson style, and the type of chart examples included in the preview.</p>
     </div>
     <div class="preview-shell">
       <div class="guide-preview-grid">
@@ -217,7 +216,7 @@
     <div class="section-head">
       <small>What is inside</small>
       <h2>A free resource that gives real value before anyone enters the members area.</h2>
-      <p>The guide should make the reader feel that your framework is structured, serious, and worth following. It works as the bridge between casual visitors and paying students.</p>
+      <p>This preview is designed to give you a clear first look at the structure, discipline, and lesson quality inside MotivTrading Academy.</p>
     </div>
     <div class="grid-3">
       <div class="card"><h3>Breakout structures</h3><p>Explain what price consolidation looks like, how breakouts form, and why context matters before taking a trade.</p></div>
@@ -231,8 +230,8 @@
   <div class="container">
     <div class="section-head">
       <small>Chart previews</small>
-      <h2>Use visual proof so the free guide feels like a real mini playbook.</h2>
-      <p>These previews give visitors a stronger reason to opt in because they can immediately see the style and quality of the material.</p>
+      <h2>Preview the lesson style before you enter</h2>
+      <p>See the chart style, presentation quality, and academy layout before you access the preview.</p>
     </div>
     <div class="grid-3">
       <article class="proof-card">
@@ -255,10 +254,10 @@
   <div class="container two-col">
     <div class="card">
       <div class="section-head"><small>Why this page matters</small><h2 style="font-size:38px">A simple lead tool can become one of your strongest sales assets.</h2></div>
-      <p style="color:var(--muted)">This free lesson preview introduces visitors to the quality of the academy, builds trust, and gives them a stronger first step before moving into the full program.</p>
+      <p style="color:var(--muted)">The free preview gives you a first look at the academy experience before deciding whether to unlock full access.</p>
     </div>
     <div class="card">
-      <div class="section-head"><small>Next step</small><h2 style="font-size:38px">Use the lesson preview to introduce the full framework.</h2></div>
+      <div class="section-head"><small>Next step</small><h2 style="font-size:38px">Use the guide to introduce the full framework.</h2></div>
       <div class="cta-row">
         <a class="btn btn-primary" href="motivtrading_start.html#offer">Unlock the Academy</a>
         <a class="btn btn-secondary" href="motivtrading_start.html">See the full program</a>
@@ -297,7 +296,7 @@
     }
 
     if (!FREE_GUIDE_FUNCTION_URL || FREE_GUIDE_FUNCTION_URL.includes("PASTE_YOUR_SUPABASE_FUNCTION_URL_HERE")) {
-      setStatus("error", "Add your Supabase function URL inside this file before testing the form.");
+      setStatus("error", "Free lesson access is not available yet. Please try again shortly.");
       return;
     }
 
@@ -319,11 +318,11 @@
       if (!response.ok) {
         const message = data?.error
           ? (typeof data.error === "string" ? data.error : JSON.stringify(data.error))
-          : "There was a problem sending the access email.";
+          : "There was a problem sending the guide.";
         throw new Error(message);
       }
 
-      setStatus("success", "Success — your free lesson access email has been sent.");
+      setStatus("success", "Success — the free guide has been sent to your email.");
       form.reset();
 
       if (FREE_GUIDE_SUCCESS_REDIRECT) {
@@ -333,10 +332,10 @@
       }
     } catch (error) {
       console.error(error);
-      setStatus("error", error.message || "There was a problem sending the access email. Please try again.");
+      setStatus("error", error.message || "There was a problem sending the guide. Please try again.");
     } finally {
       submitButton.disabled = false;
-      submitButton.textContent = "Unlock the free lesson";
+      submitButton.textContent = "Send me the guide";
     }
   });
 </script>
