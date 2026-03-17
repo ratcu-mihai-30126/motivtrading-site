@@ -32,5 +32,3 @@ Fixes included:
 
 Current login password:
 elite
-
-- academy-preview.html
