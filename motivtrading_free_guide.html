@@ -147,7 +147,8 @@
     <div>
       <div class="eyebrow">Free guide</div>
       <h1>Get the free MotivTrading guide and start learning with real chart examples.</h1>
-      <p class="lead">A premium beginner guide built from the same concepts used inside MotivTrading Academy: breakout setups, flag patterns, liquidity ideas, risk management, and a preview of the members area.</p>
+      <p class="lead">Built from the same ideas used inside MotivTrading Academy, this free guide gives you a first look at breakout setups, flag patterns, liquidity concepts, risk management, and the structured teaching style behind the members area.</p>
+      <p class="lead">The MotivTrading team has over 5 years of experience in the markets, and this guide was created to help newer traders avoid the same early mistakes around random entries, weak risk habits, and unstructured execution.</p>
       <div class="pill-list">
         <div class="pill">Real chart examples</div>
         <div class="pill">Risk-first principles</div>
@@ -165,7 +166,7 @@
       <div class="section-head">
         <small>Free guide access</small>
         <h2 style="font-size:34px;margin-top:10px">Send the guide to your email</h2>
-        <p>Enter your details below and get access to a free MotivTrading lesson preview straight to your inbox.</p>
+        <p>Enter your details below and get the free MotivTrading guide delivered to your email.</p>
       </div>
 
       <form id="freeGuideForm" class="form-grid">
@@ -175,10 +176,6 @@
         <div id="guide-status" class="status-box" aria-live="polite"></div>
         <div class="fine">Instant access. Free PDF. Delivered to your email.</div>
       </form>
-
-      <div class="config-note">
-        Get instant access to a free lesson preview and see how MotivTrading breaks down structure, execution, and discipline.
-      </div>
     </div></div>
   </div>
 </section>
@@ -187,8 +184,8 @@
   <div class="container">
     <div class="section-head">
       <small>Preview</small>
-      <h2>What you get in the free preview</h2>
-      <p>Take a quick look at the academy environment, the lesson style, and the type of chart examples included in the preview.</p>
+      <h2>See what is waiting inside the free guide.</h2>
+      <p>Get a quick look at the academy style, the members dashboard, and the kind of chart examples included in the guide.</p>
     </div>
     <div class="preview-shell">
       <div class="guide-preview-grid">
@@ -215,8 +212,8 @@
   <div class="container">
     <div class="section-head">
       <small>What is inside</small>
-      <h2>A free resource that gives real value before anyone enters the members area.</h2>
-      <p>This preview is designed to give you a clear first look at the structure, discipline, and lesson quality inside MotivTrading Academy.</p>
+      <h2>A free resource built to give real value from the start.</h2>
+      <p>The guide introduces the core principles behind the academy in a simple, practical way so you can start with structure instead of guesswork.</p>
     </div>
     <div class="grid-3">
       <div class="card"><h3>Breakout structures</h3><p>Explain what price consolidation looks like, how breakouts form, and why context matters before taking a trade.</p></div>
@@ -230,8 +227,8 @@
   <div class="container">
     <div class="section-head">
       <small>Chart previews</small>
-      <h2>Preview the lesson style before you enter</h2>
-      <p>See the chart style, presentation quality, and academy layout before you access the preview.</p>
+      <h2>Real chart previews from the MotivTrading framework.</h2>
+      <p>These examples show the style of chart work, structure reading, and execution thinking used throughout the academy.</p>
     </div>
     <div class="grid-3">
       <article class="proof-card">
@@ -253,11 +250,11 @@
 <section class="section">
   <div class="container two-col">
     <div class="card">
-      <div class="section-head"><small>Inside the preview</small><h2 style="font-size:38px">Get a real first look at the MotivTrading experience.</h2></div>
-      <p style="color:var(--muted)">See how concepts are explained, how setups are structured, and how the academy is built to improve execution.</p>
+      <div class="section-head"><small>Why traders start here</small><h2 style="font-size:38px">A practical first step before the full academy.</h2></div>
+      <p style="color:var(--muted)">Start with the guide, study the chart examples, and get familiar with the structure behind the MotivTrading approach before unlocking the full program.</p>
     </div>
     <div class="card">
-      <div class="section-head"><small>Continue the journey</small><h2 style="font-size:38px">Ready to see the full academy?</h2></div>
+      <div class="section-head"><small>Next step</small><h2 style="font-size:38px">Continue into the full MotivTrading framework.</h2></div>
       <div class="cta-row">
         <a class="btn btn-primary" href="motivtrading_start.html#offer">Unlock the Academy</a>
         <a class="btn btn-secondary" href="motivtrading_start.html">See the full program</a>
@@ -296,7 +293,7 @@
     }
 
     if (!FREE_GUIDE_FUNCTION_URL || FREE_GUIDE_FUNCTION_URL.includes("PASTE_YOUR_SUPABASE_FUNCTION_URL_HERE")) {
-      setStatus("error", "Free lesson access is not available yet. Please try again shortly.");
+      setStatus("error", "The guide form is not available right now. Please try again shortly.");
       return;
     }
 
@@ -322,7 +319,7 @@
         throw new Error(message);
       }
 
-      setStatus("success", "Success — the free guide has been sent to your email.");
+      setStatus("success", "Success — your free guide has been sent to your email.");
       form.reset();
 
       if (FREE_GUIDE_SUCCESS_REDIRECT) {
