@@ -440,3 +440,259 @@ body.has-shell-header .hero{padding-top:42px;}
   .setup-card{padding:20px; border-radius:22px;}
   .setup-detail-grid{grid-template-columns:1fr;}
 }
+
+
+/* ===== March 2026 premium module upgrade ===== */
+body[data-member-page]{
+  background:
+    radial-gradient(circle at 8% 0%, rgba(240,207,132,.12), transparent 24%),
+    radial-gradient(circle at 92% 10%, rgba(90,126,255,.08), transparent 20%),
+    linear-gradient(180deg, #09111f 0%, #07101d 46%, #050c17 100%);
+}
+
+body[data-member-page] .hero{
+  position:relative;
+  padding:48px 0 34px;
+}
+body[data-member-page] .hero::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0 0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(240,207,132,.35), transparent);
+}
+
+body[data-member-page] .eyebrow{
+  background:linear-gradient(180deg, rgba(215,181,109,.12), rgba(255,255,255,.03));
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+body[data-member-page] h1{
+  max-width:900px;
+  text-wrap:balance;
+}
+body[data-member-page] .lead{
+  max-width:860px;
+  font-size:18px;
+  color:rgba(255,255,255,.78);
+}
+
+.content-column{min-width:0}
+
+.sidebar,
+.lesson-panel,
+.lesson-hero-card,
+.rail-card,
+.setup-card,
+.example-card,
+.case-study-card,
+.summary-card,
+.next-step-card,
+.lesson-footer-nav a,
+.objective-item,
+.chapter-item,
+.note-card,
+.setup-detail,
+.progress-box,
+.lesson-status-card{
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.sidebar{
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 30px 60px rgba(0,0,0,.26);
+}
+.sidebar::before{
+  content:"";
+  display:block;
+  height:1px;
+  margin:-2px 0 16px;
+  background:linear-gradient(90deg, rgba(240,207,132,.0), rgba(240,207,132,.45), rgba(240,207,132,.0));
+}
+.sidebar a{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.sidebar a.active,
+.sidebar a:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 30px rgba(0,0,0,.18);
+}
+
+.progress-box,
+.lesson-status-card,
+.rail-card,
+.objective-item,
+.chapter-item,
+.note-card,
+.setup-detail,
+.summary-card{
+  position:relative;
+  overflow:hidden;
+}
+.progress-box::after,
+.lesson-status-card::after,
+.rail-card::after,
+.objective-item::after,
+.chapter-item::after,
+.note-card::after,
+.setup-detail::after,
+.summary-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.035), transparent 40%);
+  pointer-events:none;
+}
+
+.lesson-hero-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top right, rgba(240,207,132,.12), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+  border-color:rgba(255,255,255,.12);
+}
+.lesson-hero-card::before,
+.lesson-panel::before,
+.rail-card::before,
+.setup-card::before,
+.lesson-footer-nav a::before{
+  content:"";
+  position:absolute;
+  left:24px;
+  right:24px;
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(240,207,132,.3), transparent);
+}
+.lesson-hero-card .meta-pill{
+  background:rgba(255,255,255,.05);
+  color:#f2e3b3;
+}
+.objective-item{
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.16));
+}
+.objective-item span{color:rgba(255,255,255,.72)}
+
+.lesson-panel{
+  position:relative;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+  border-color:rgba(255,255,255,.12);
+  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.lesson-panel:hover{
+  transform:translateY(-2px);
+  border-color:rgba(215,181,109,.22);
+  box-shadow:0 28px 60px rgba(0,0,0,.28);
+}
+.lesson-panel h3,
+.rail-card h4,
+.setup-title-xl,
+.example-card h4,
+.case-study-card h3{
+  letter-spacing:-.02em;
+}
+.lesson-kicker,.section-kicker{
+  color:#f0cf84;
+}
+
+.chapter-item{
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.16));
+}
+.chapter-item > div:last-child{color:rgba(255,255,255,.78)}
+.note-card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.14));}
+.warning-card{box-shadow:inset 4px 0 0 var(--red)}
+.action-card{box-shadow:inset 4px 0 0 var(--gold)}
+
+.lesson-visual img,
+.example-card img,
+.case-study-card img,
+.setup-chart-full,
+.image-card img{
+  background:linear-gradient(180deg, #0b1527, #08101d);
+  box-shadow:0 24px 40px rgba(0,0,0,.34);
+}
+.setup-chart-frame{
+  background:linear-gradient(180deg, rgba(11,21,39,.96), rgba(8,16,29,.9));
+}
+.setup-stat,
+.pill,
+.meta-pill{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.rail-card{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+  border-color:rgba(255,255,255,.11);
+}
+.rail-list a,
+.rail-list div{
+  transition:transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.rail-list a:hover{
+  transform:translateX(2px);
+}
+.quick-actions-card .btn-secondary,
+.lesson-footer-nav a,
+.btn-secondary,
+.btn-reset{
+  transition:transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.quick-actions-card .btn-secondary:hover,
+.lesson-footer-nav a:hover,
+.btn-secondary:hover,
+.btn-reset:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 28px rgba(0,0,0,.18);
+}
+.btn,
+.btn-complete{
+  letter-spacing:.01em;
+}
+.btn-secondary{
+  background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+}
+
+.lesson-footer-nav a{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
+}
+.lesson-footer-nav a strong{font-size:21px}
+.lesson-footer-nav a span{color:rgba(255,255,255,.68)}
+
+.setup-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top right, rgba(240,207,132,.10), transparent 22%),
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+}
+.setup-badge{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.setup-detail p{color:rgba(255,255,255,.8)}
+
+.lesson-panel p,
+.lesson-panel li,
+.setup-intro,
+.setup-caption,
+.chart-caption,
+.summary-note,
+.sidebar a span,
+.rail-card .small,
+.lesson-status-card p{
+  color:rgba(255,255,255,.68);
+}
+
+.footer{
+  color:rgba(255,255,255,.5);
+}
+
+@media (max-width:980px){
+  body[data-member-page] .hero{padding:36px 0 26px}
+  body[data-member-page] .lead{font-size:17px}
+  .lesson-hero-card,.lesson-panel,.setup-card{padding:22px}
+}
