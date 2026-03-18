@@ -501,7 +501,15 @@ body[data-member-page] .lead{
 .sidebar{
   border-color:rgba(255,255,255,.12);
   box-shadow:0 30px 60px rgba(0,0,0,.26);
+  max-height:calc(100vh - 112px);
+  overflow:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(240,207,132,.35) transparent;
 }
+.sidebar::-webkit-scrollbar{width:8px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(240,207,132,.22);border-radius:999px}
+.sidebar::-webkit-scrollbar-thumb:hover{background:rgba(240,207,132,.38)}
 .sidebar::before{
   content:"";
   display:block;
