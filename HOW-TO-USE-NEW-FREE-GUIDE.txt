@@ -1,0 +1,6 @@
+Replace the current free-guide email in your Supabase function with FREE-GUIDE-EMAIL-TEMPLATE.html.
+
+Set {{GUIDE_URL}} to your live lesson page URL, for example:
+https://motivtrading.com/motivtrading_free_guide.html
+
+This version sends visitors to the locked free lesson preview instead of attaching the PDF.
